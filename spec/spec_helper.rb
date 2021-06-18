@@ -17,7 +17,7 @@ SimpleCov.start do
   add_group 'Specs', 'spec'
 end
 
-require 'azure_batch_transcription'
+require 'azure_stt'
 
 # Require all support files
 Dir.glob(File.join(__dir__, 'support', '**/*.rb')).sort.each do |file|

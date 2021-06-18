@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe AzureBatchTranscription do
+describe AzureSTT do
   describe '#configuration' do
     subject(:configuration) do
       described_class.configuration
@@ -10,7 +10,7 @@ describe AzureBatchTranscription do
 
     it 'is an instance of AzureBatchTranscription::Configuration' do
       expect(configuration)
-        .to be_an_instance_of AzureBatchTranscription::Configuration
+        .to be_an_instance_of AzureSTT::Configuration
     end
 
     it 'is memoized' do

@@ -3,11 +3,11 @@
 #
 # Top level module for Azure Batch Transcription
 #
-module AzureBatchTranscription
+module AzureSTT
 end
 
-require_relative 'azure_batch_transcription/configuration'
+require_relative 'azure_stt/configuration'
 
-AzureBatchTranscription.configure do |config|
+AzureSTT.configure do |config|
   config.subscription_key = ENV.fetch('SUBSCRIPTION_KEY')
 end
