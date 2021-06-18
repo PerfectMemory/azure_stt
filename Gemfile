@@ -7,6 +7,7 @@ group :test do
   gem 'dotenv'
   gem 'factory_bot', '~> 6'
   gem 'faker', '~> 2'
+  gem 'httparty'
   gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3'
   gem 'rubocop', require: false
@@ -14,5 +15,6 @@ group :test do
   gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
   gem 'simplecov', require: false
+  gem 'webmock'
   gem 'yard'
 end

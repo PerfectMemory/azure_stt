@@ -6,6 +6,7 @@ require 'dotenv'
 require 'factory_bot'
 require 'faker'
 require 'simplecov'
+require 'webmock/rspec'
 
 Dotenv.load
 
