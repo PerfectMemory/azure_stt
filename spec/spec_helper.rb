@@ -3,6 +3,8 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'dotenv'
+require 'factory_bot'
+require 'faker'
 require 'simplecov'
 
 Dotenv.load
@@ -15,7 +17,7 @@ SimpleCov.start do
   add_group 'Specs', 'spec'
 end
 
-require 'azure-batch-transcription'
+require 'azure_batch_transcription'
 
 # Require all support files
 Dir.glob(File.join(__dir__, 'support', '**/*.rb')).sort.each do |file|
