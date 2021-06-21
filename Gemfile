@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'dry-struct', '~> 1'
+
 group :test do
   gem 'bundler', '~> 1.17'
   gem 'dotenv'
@@ -10,6 +12,7 @@ group :test do
   gem 'httparty'
   gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3'
+  gem 'rspec-its'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rake', require: false

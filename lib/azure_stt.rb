@@ -26,6 +26,7 @@ require_relative 'azure_stt/configuration'
 require_relative 'azure_stt/errors'
 require_relative 'azure_stt/client'
 require_relative 'azure_stt/models'
+require_relative 'azure_stt/parsers'
 
 AzureSTT.configure do |config|
   config.subscription_key = ENV.fetch('SUBSCRIPTION_KEY')
