@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe AzureSTT::Client do
   subject(:client) do
-    described_class.new(region: 'region')
+    described_class.new(region: 'region', subscription_key: 'ljdhfkjfh')
   end
 
   let(:arguments) do
@@ -28,8 +28,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:post,
-                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions'
-                  )
+                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
         .to_return(response)
     end
 

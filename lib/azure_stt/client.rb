@@ -9,16 +9,17 @@ module AzureSTT
   class Client
     include HTTParty
 
-    attr_reader :region
+    attr_reader :region, :subscription_key
 
     #
     # Initialize the client
     #
-    # @param [String] api_subscription Cognitive Services API Key
+    # @param [String] subscription_key Cognitive Services API Key
     # @param [String] region The region of your resources
     #
-    def initialize(region:, api_subscription: AzureSTT.configuration.subscription_key)
-      @api_key = api_subscription
+    def initialize(region:, subscription_key:)
+      @subscription_key = subscription_key
+      @region = region
       self.class.base_uri "https://#{region}.api.cognitive.microsoft.com/speechtotext/v3.0"
     end
 
@@ -27,14 +28,14 @@ module AzureSTT
     #
     # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription
     #
-    # @param [Hash] **args
+    # @param [Hash] args
     #
     # @return [Hash] The JSON body response, parsed by HTTParty
     #
     def create_transcription(**args)
       results = post(
         '/transcriptions',
-        body: args
+        args.to_json
       )
 
       results.parsed_response
@@ -43,6 +44,7 @@ module AzureSTT
     private
 
     def post(path, body)
+      puts body
       options = {
         headers: headers,
         body: body
@@ -61,11 +63,12 @@ module AzureSTT
     # @return [<Type>] <description>
     #
     # @raise [ServiceError] if an error occured from the API, for instance if
-    # api_subscripition is invalid.
+    # subscription_key is invalid.
     #
     # @raise [NetError] if the server has not been reached
     #
     def handle_response(response)
+      puts response.inspect
       case response.code
       when 200..299
         response
@@ -91,7 +94,7 @@ module AzureSTT
     #
     def headers
       {
-        'Ocp-Apim-Subscription-Key' => @api_key,
+        'Ocp-Apim-Subscription-Key' => subscription_key,
         'Content-Type' => 'application/json'
       }
     end
