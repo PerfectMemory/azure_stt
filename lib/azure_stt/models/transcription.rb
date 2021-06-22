@@ -112,7 +112,7 @@ module AzureSTT
       end
 
       def retrieve_report
-        report_file = files.select { |f| f.kind == "TranscriptionReport" }.first
+        report_file = files.find { |f| f.kind == 'TranscriptionReport' }
         file_hash = AzureSTT.client.get_file(report_file.content_url)
         Report.new(Parsers::Report.new(file_hash).attributes)
       end

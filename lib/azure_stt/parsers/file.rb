@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AzureSTT
   module Parsers
     #
@@ -5,6 +7,8 @@ module AzureSTT
     #
     class File < Base
       protected
+
+      # rubocop:disable Metrics/AbcSize
 
       #
       # Build a hash which can create a Models::File
@@ -21,6 +25,7 @@ module AzureSTT
           content_url: hash[:links].transform_keys(&:to_sym)[:contentUrl]
         }
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end
