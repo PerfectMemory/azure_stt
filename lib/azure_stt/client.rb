@@ -75,6 +75,12 @@ module AzureSTT
       results.parsed_response[:values] || results.parsed_response['values']
     end
 
+    def get_transcription_files(id)
+      results = get(get("/transcriptions/#{id}/files"))
+
+      results.parsed_response[:values] || results.parsed_response['values']
+    end
+
     private
 
     def post(path, body)

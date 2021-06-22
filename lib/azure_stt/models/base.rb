@@ -6,8 +6,6 @@ module AzureSTT
     # Base class for the models
     #
     class Base < Dry::Struct
-      attribute :id, Types::Coercible::String
-
       # throw an error when unknown keys provided
       schema schema.strict
 

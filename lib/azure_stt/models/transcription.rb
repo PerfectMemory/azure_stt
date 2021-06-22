@@ -7,6 +7,7 @@ module AzureSTT
     # create and retrieve the transcriptions.
     #
     class Transcription < Base
+      attribute :id, Types::Coercible::String
       attribute :model, Types::Coercible::String
       attribute :properties, Types::Hash
       attribute :links, Types::Hash
@@ -15,6 +16,7 @@ module AzureSTT
       attribute :status, Types::Coercible::String
       attribute :locale, Types::Coercible::String
       attribute :display_name, Types::Coercible::String
+      attribute? :files, Types::Array.of(File).default([].freeze)
 
       #
       # Is the process still running ?
@@ -62,12 +64,33 @@ module AzureSTT
       end
 
       #
+      # Get the report of a transcription from transcriptions/{id}/files route
+      #
+      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles/console
+      #
+      # @return [Models::Report]
+      #
+      def report; end
+
+      def results; end
+
+      #
       # Reinterrogate the API to refresh a transcription.
       #
       def refresh!
         transcription_hash = AzureSTT.client.get_transcription(id)
         parsed_attributes = Parsers::Transcription.new(transcription_hash).attributes
         @attributes = self.class.schema.call_unsafe(parsed_attributes)
+      end
+
+      private
+
+      def files
+        @files ||= retrieve_files
+      end
+
+      def retrieve_files
+        
       end
 
       class << self
