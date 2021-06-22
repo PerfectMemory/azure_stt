@@ -44,7 +44,6 @@ module AzureSTT
     private
 
     def post(path, body)
-      puts body
       options = {
         headers: headers,
         body: body
@@ -68,15 +67,14 @@ module AzureSTT
     # @raise [NetError] if the server has not been reached
     #
     def handle_response(response)
-      puts response.inspect
       case response.code
       when 200..299
         response
       else
         if response.request.format == :json
           raise ServiceError.new(
-            code: response['code'],
-            message: response['message']
+            code: response.code,
+            message: response.response.message
           )
         else
           raise NetError.new(

@@ -86,13 +86,17 @@ describe AzureSTT::Models::Transcription do
       allow(AzureSTT.client)
         .to receive(:create_transcription)
         .with(params_client)
-        .and_return(:transcription_hash)
+        .and_return(transcription_hash)
     end
 
     it 'calls the client' do
       create
       expect(AzureSTT.client)
         .to have_received(:create_transcription)
+    end
+
+    it 'can create a transcription using the parser' do
+      expect(create).to be_an_instance_of AzureSTT::Models::Transcription
     end
   end
 end

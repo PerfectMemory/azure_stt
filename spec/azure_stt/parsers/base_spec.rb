@@ -13,7 +13,7 @@ describe AzureSTT::Parsers::Base do
 
   describe '#initialize' do
     it 'initializes the hash attribute' do
-      expect(parser.hash).to be hash
+      expect(parser.hash).to eq hash
     end
   end
 

@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: bundle install
       - name: Run tests
-        run: bundle exec rake
+        run: bundle exec rake ci
+        env:
+          REGION: uscentral
+          SUBSCRIPTION_KEY: k3ah8ztrc4ojeh98r05zh7v6x9w62lqp
       - name: Rubocop
         run: rubocop

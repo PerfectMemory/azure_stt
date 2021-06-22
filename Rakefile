@@ -1,36 +1,27 @@
-#!/usr/bin/env rake
-
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
+require 'rspec/core/rake_task'
 
-# rubocop:disable Lint/SuppressedException
-begin
-  require 'rspec/core/rake_task'
-
-  desc 'Run RSpec unit tests only'
-  RSpec::Core::RakeTask.new('spec') do |task|
-    task.pattern = './spec/**/*_spec.rb'
-    task.rspec_opts = '--tag ~unit'
-  end
-rescue LoadError
+desc 'Run RSpec code examples (unit & integration tests, needs live instance)'
+RSpec::Core::RakeTask.new('spec:all') do |task|
+  task.pattern = './spec/**/*_spec.rb'
+  task.rspec_opts = '-O .rspec-no-tags'
 end
 
-begin
-  require 'rubocop/rake_task'
-
-  RuboCop::RakeTask.new
-rescue LoadError
+desc 'Run RSpec code examples (unit tests only)'
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.pattern = './spec/**/*_spec.rb'
+  task.exclude_pattern = './spec/integration/**/*_spec.rb'
+  task.rspec_opts = '-O .rspec'
 end
 
-begin
-  require 'yard'
-
-  YARD::Rake::YardocTask.new do |yard|
-    yard.files = ['lib/**/*.rb', '-', 'CHANGELOG.md']
-  end
-rescue LoadError
+desc 'Run RSpec code examples (integration tests only, needs live instance)'
+RSpec::Core::RakeTask.new('spec:integration') do |task|
+  task.pattern = './spec/**/*_spec.rb'
+  task.rspec_opts = '-O .rspec --tag integration'
 end
 
-task default: 'spec'
-# rubocop:enable Lint/SuppressedException
+desc 'Run CI tests'
+task ci: %i[spec:all]
+
+task default: :spec

@@ -11,15 +11,7 @@ module AzureSTT
       super
       @code = code
       @message = message
-    end
-
-    #
-    # Format the message for the errors to display the message and the code
-    #
-    # @return [String] The message error
-    #
-    def to_s
-      "#{message} (#{code})"
+      super("#{message} (#{code})")
     end
   end
 
