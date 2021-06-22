@@ -12,11 +12,11 @@ describe AzureSTT::Models::Transcription do
       transcription.new(status: 'Running')
     end
 
-    its(:running?)      { should be true  }
-    its(:finished?)     { should be false }
-    its(:failed?)       { should be false }
-    its(:not_started?)  { should be false }
-    its(:succeeded?)    { should be false }
+    its(:running?)      { is_expected.to be true  }
+    its(:finished?)     { is_expected.to be false }
+    its(:failed?)       { is_expected.to be false }
+    its(:not_started?)  { is_expected.to be false }
+    its(:succeeded?)    { is_expected.to be false }
   end
 
   context 'when the status is "Succeeded"' do
@@ -24,11 +24,11 @@ describe AzureSTT::Models::Transcription do
       transcription.new(status: 'Succeeded')
     end
 
-    its(:running?)      { should be false }
-    its(:finished?)     { should be true  }
-    its(:failed?)       { should be false }
-    its(:not_started?)  { should be false }
-    its(:succeeded?)    { should be true  }
+    its(:running?)      { is_expected.to be false }
+    its(:finished?)     { is_expected.to be true  }
+    its(:failed?)       { is_expected.to be false }
+    its(:not_started?)  { is_expected.to be false }
+    its(:succeeded?)    { is_expected.to be true  }
   end
 
   context 'when the status is "NotStarted"' do
@@ -36,11 +36,11 @@ describe AzureSTT::Models::Transcription do
       transcription.new(status: 'NotStarted')
     end
 
-    its(:running?)      { should be false }
-    its(:finished?)     { should be false }
-    its(:failed?)       { should be false }
-    its(:not_started?)  { should be true  }
-    its(:succeeded?)    { should be false }
+    its(:running?)      { is_expected.to be false }
+    its(:finished?)     { is_expected.to be false }
+    its(:failed?)       { is_expected.to be false }
+    its(:not_started?)  { is_expected.to be true  }
+    its(:succeeded?)    { is_expected.to be false }
   end
 
   context 'when the status is "Failed"' do
@@ -48,11 +48,11 @@ describe AzureSTT::Models::Transcription do
       transcription.new(status: 'Failed')
     end
 
-    its(:running?)      { should be false }
-    its(:finished?)     { should be true  }
-    its(:failed?)       { should be true  }
-    its(:not_started?)  { should be false }
-    its(:succeeded?)    { should be false }
+    its(:running?)      { is_expected.to be false }
+    its(:finished?)     { is_expected.to be true  }
+    its(:failed?)       { is_expected.to be true  }
+    its(:not_started?)  { is_expected.to be false }
+    its(:succeeded?)    { is_expected.to be false }
   end
 
   describe '#create' do
@@ -62,7 +62,7 @@ describe AzureSTT::Models::Transcription do
 
     let(:params) do
       {
-        content_urls: [ 'whatever.ogg' ],
+        content_urls: ['whatever.ogg'],
         properties: {},
         locale: 'en-US',
         display_name: ''
@@ -96,7 +96,7 @@ describe AzureSTT::Models::Transcription do
     end
 
     it 'can create a transcription using the parser' do
-      expect(create).to be_an_instance_of AzureSTT::Models::Transcription
+      expect(create).to be_an_instance_of described_class
     end
   end
 end

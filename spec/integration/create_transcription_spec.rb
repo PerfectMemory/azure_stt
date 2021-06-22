@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+# rubocop:disable RSpec/DescribeClass
 describe 'Create a transcription', integration: true do
   let(:arguments) do
     {
@@ -103,3 +104,4 @@ describe 'Create a transcription', integration: true do
     end
   end
 end
+# rubocop:enable RSpec/DescribeClass

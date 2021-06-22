@@ -17,8 +17,8 @@ FactoryBot.define do
       {
         diarizationEnabled: false,
         wordLevelTimestampsEnabled: false,
-        punctuationMode: "DictatedAndAutomatic",
-        profanityFilterMode: "Masked"
+        punctuationMode: 'DictatedAndAutomatic',
+        profanityFilterMode: 'Masked'
       }
     end
     last_action_date_time { Faker::Date.in_date_period }
