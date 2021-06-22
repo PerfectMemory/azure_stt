@@ -11,7 +11,7 @@ describe 'Get a transcription', integration: true do
     end
     AzureSTT.instance_variable_set(:@client, nil)
     stub_request(:get,
-                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions")
+                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
       .to_return(response)
   end
 
@@ -34,7 +34,7 @@ describe 'Get a transcription', integration: true do
 
       it 'can create an array of transcripitons' do
         expect(transcriptions)
-          .to all( be_an_instance_of(AzureSTT::Models::Transcription) )
+          .to all(be_an_instance_of(AzureSTT::Models::Transcription))
       end
     end
   end

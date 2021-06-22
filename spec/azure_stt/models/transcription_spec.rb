@@ -100,7 +100,6 @@ describe AzureSTT::Models::Transcription do
     end
   end
 
-
   describe '#get' do
     subject(:get) do
       described_class.get(id)
@@ -159,7 +158,7 @@ describe AzureSTT::Models::Transcription do
 
     it 'contains instances of AzureSTT::Models::Transcription' do
       expect(get_multiple)
-        .to all( be_an_instance_of AzureSTT::Models::Transcription )
+        .to all(be_an_instance_of(described_class))
     end
   end
 end

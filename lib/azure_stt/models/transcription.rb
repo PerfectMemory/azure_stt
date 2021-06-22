@@ -108,7 +108,8 @@ module AzureSTT
         # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions
         #
         # @param [Integer] skip Number of transcriptions that will be skipped (optional)
-        # @param [Integer] top Number of transcriptions that will be included after skipping (optional)
+        # @param [Integer] top Number of transcriptions that will be included after skipping
+        # (optional)
         #
         # @return [Array[Transcription]]
         #

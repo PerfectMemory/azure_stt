@@ -62,15 +62,14 @@ describe AzureSTT::Client do
     let(:id) do
       '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
     end
+    let(:json_response) do
+      read_fixture('transcription.json')
+    end
 
     before do
       stub_request(:get,
                    "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
         .to_return(response)
-    end
-
-    let(:json_response) do
-      read_fixture('transcription.json')
     end
 
     it_behaves_like 'HTTP_errors_handler'
@@ -85,17 +84,17 @@ describe AzureSTT::Client do
       client.get_transcriptions
     end
 
-    it_behaves_like 'HTTP_errors_handler'
-
-    before do
-      stub_request(:get,
-                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions")
-        .to_return(response)
-      end
-
     let(:json_response) do
       read_fixture('transcriptions.json')
     end
+
+    before do
+      stub_request(:get,
+                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+        .to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
 
     it 'returns the correct parsed JSON' do
       expect(get_transcriptions).to eq(JSON.parse(json_response)['values'])

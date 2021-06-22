@@ -65,7 +65,7 @@ module AzureSTT
     #
     def get_transcriptions(skip: nil, top: nil)
       results = get(
-        "/transcriptions",
+        '/transcriptions',
         {
           skip: skip,
           top: top
@@ -87,7 +87,7 @@ module AzureSTT
       handle_response(response)
     end
 
-    def get(path, body=nil)
+    def get(path, body = nil)
       options = {
         headers: headers,
         body: body
