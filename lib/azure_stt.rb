@@ -29,6 +29,6 @@ require_relative 'azure_stt/models'
 require_relative 'azure_stt/parsers'
 
 AzureSTT.configure do |config|
-  config.subscription_key = ENV.fetch('SUBSCRIPTION_KEY')
-  config.region = ENV.fetch('REGION')
+  config.subscription_key = ENV['SUBSCRIPTION_KEY']
+  config.region = ENV['REGION']
 end
