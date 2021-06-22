@@ -3,13 +3,13 @@
 source 'https://rubygems.org'
 
 gem 'dry-struct', '~> 1'
+gem 'httparty'
 
 group :test do
   gem 'bundler', '~> 1.17'
   gem 'dotenv'
   gem 'factory_bot', '~> 6'
   gem 'faker', '~> 2'
-  gem 'httparty'
   gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3'
   gem 'rspec-its'
