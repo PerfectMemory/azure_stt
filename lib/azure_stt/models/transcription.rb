@@ -61,6 +61,15 @@ module AzureSTT
         succeeded? || failed?
       end
 
+      #
+      # Reinterrogate the API to refresh a transcription.
+      #
+      def refresh!
+        transcription_hash = AzureSTT.client.get_transcription(id)
+        parsed_attributes = Parsers::Transcription.new(transcription_hash).attributes
+        @attributes = self.class.schema.call_unsafe(parsed_attributes)
+      end
+
       class << self
         #
         # Create a transcription by calling the API.

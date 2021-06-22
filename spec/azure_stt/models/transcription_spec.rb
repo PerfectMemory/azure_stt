@@ -161,4 +161,34 @@ describe AzureSTT::Models::Transcription do
         .to all(be_an_instance_of(described_class))
     end
   end
+
+  describe '#refresh!' do
+    subject(:refresh) do
+      transcription.refresh!
+    end
+
+    let(:transcription_hash) do
+      load_json('transcription.json')
+    end
+
+    before do
+      allow(AzureSTT.client)
+        .to receive(:get_transcription)
+        .with(transcription.id)
+        .and_return(transcription_hash)
+    end
+
+    it 'calls the client' do
+      refresh
+      expect(AzureSTT.client)
+        .to have_received(:get_transcription)
+    end
+
+    it 'updates the attributes' do
+      expect do
+        refresh
+      end.to change(transcription, :last_action_date_time)
+         .to(Date.parse('"2019-01-07T11:36:07Z"'))
+    end
+  end
 end
