@@ -62,6 +62,7 @@ describe AzureSTT::Client do
     let(:id) do
       '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
     end
+
     let(:json_response) do
       read_fixture('transcription.json')
     end
@@ -98,6 +99,56 @@ describe AzureSTT::Client do
 
     it 'returns the correct parsed JSON' do
       expect(get_transcriptions).to eq(JSON.parse(json_response)['values'])
+    end
+  end
+
+  describe '#get_transcriptions_files' do
+    subject(:get_transcription_files) do
+      client.get_transcription_files(id)
+    end
+
+    let(:id) do
+      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
+    end
+
+    let(:json_response) do
+      read_fixture('files.json')
+    end
+
+    before do
+      stub_request(:get,
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}/files")
+        .to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(get_transcription_files).to eq(JSON.parse(json_response)['values'])
+    end
+  end
+
+  describe '#get_file' do
+    subject(:get_file) do
+      client.get_file(url)
+    end
+
+    let(:url) do
+      'https://path.json'
+    end
+
+    let(:json_response) do
+      read_fixture('report.json')
+    end
+
+    before do
+      stub_request(:get, url).to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(get_file).to eq(JSON.parse(json_response))
     end
   end
 end

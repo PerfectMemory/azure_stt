@@ -22,3 +22,4 @@ end
 require_relative 'models/base'
 require_relative 'models/transcription'
 require_relative 'models/file'
+require_relative 'models/report'

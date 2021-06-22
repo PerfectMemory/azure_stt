@@ -70,7 +70,9 @@ module AzureSTT
       #
       # @return [Models::Report]
       #
-      def report; end
+      def report
+        @report ||= retrieve_report
+      end
 
       def results; end
 
@@ -81,16 +83,38 @@ module AzureSTT
         transcription_hash = AzureSTT.client.get_transcription(id)
         parsed_attributes = Parsers::Transcription.new(transcription_hash).attributes
         @attributes = self.class.schema.call_unsafe(parsed_attributes)
+        @report = nil
+        @files = nil
+        @results = nil
       end
 
       private
 
+      #
+      # All the files of a transcription
+      #
+      # @return [Array[File]] The files of the transcription
+      #
       def files
         @files ||= retrieve_files
       end
 
+      #
+      # Interrogate the API to retrieve the files
+      #
+      # @return [Array[Files]] The files of the transcription
+      #
       def retrieve_files
-        
+        files_array = AzureSTT.client.get_transcription_files(id)
+        files_array.map do |file_hash|
+          File.new(Parsers::File.new(file_hash).attributes)
+        end
+      end
+
+      def retrieve_report
+        report_file = files.select { |f| f.kind == "TranscriptionReport" }.first
+        file_hash = AzureSTT.client.get_file(report_file.content_url)
+        Report.new(Parsers::Report.new(file_hash).attributes)
       end
 
       class << self

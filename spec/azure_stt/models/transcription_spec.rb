@@ -188,7 +188,42 @@ describe AzureSTT::Models::Transcription do
       expect do
         refresh
       end.to change(transcription, :last_action_date_time)
-         .to(Date.parse('"2019-01-07T11:36:07Z"'))
+        .to(Date.parse('"2019-01-07T11:36:07Z"'))
+    end
+  end
+
+  describe '#report' do
+    subject(:report) do
+      transcription.report
+    end
+
+    let(:files_array) do
+      load_json('files.json')[:values]
+    end
+
+    let(:report_hash) do
+      load_json('report.json')
+    end
+
+    before do
+      allow(AzureSTT.client)
+        .to receive(:get_transcription_files)
+        .with(transcription.id)
+        .and_return(files_array)
+      allow(AzureSTT.client)
+        .to receive(:get_file)
+        .with('https://path.json')
+        .and_return(report_hash)
+    end
+
+    it 'calls the client' do
+      report
+      expect(AzureSTT.client)
+        .to have_received(:get_transcription_files)
+    end
+
+    it 'returns a AzureSTT::Models::Client' do
+      expect(report).to be_an_instance_of(AzureSTT::Models::Report)
     end
   end
 end

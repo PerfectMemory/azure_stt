@@ -11,3 +11,4 @@ end
 require_relative 'parsers/base'
 require_relative 'parsers/transcription'
 require_relative 'parsers/file'
+require_relative 'parsers/report'

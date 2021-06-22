@@ -75,10 +75,34 @@ module AzureSTT
       results.parsed_response[:values] || results.parsed_response['values']
     end
 
+    #
+    # Get an array containing the files for a given transcription
+    #
+    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles
+    #
+    # @param [Integer] id The identifier of the transcription
+    #
+    # @return [Array[Hash]] Array of the files of a transcription
+    #
     def get_transcription_files(id)
-      results = get(get("/transcriptions/#{id}/files"))
+      results = get("/transcriptions/#{id}/files")
 
       results.parsed_response[:values] || results.parsed_response['values']
+    end
+
+    #
+    # Read a JSON file and parse it.
+    #
+    # @param [String] file_url The url of the content
+    #
+    # @return [Hash] the file parsed
+    #
+    def get_file(file_url)
+      response = self.class.get(file_url)
+
+      results = handle_response(response)
+
+      results.parsed_response
     end
 
     private
