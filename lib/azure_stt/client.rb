@@ -41,6 +41,40 @@ module AzureSTT
       results.parsed_response
     end
 
+    #
+    # Get a transcription by giving it's id
+    #
+    # @param [String] id The identifier of the transcription
+    #
+    # @return [Hash] The JSON body response, parsed by HTTParty
+    #
+    def get_transcription(id)
+      results = get("/transcriptions/#{id}")
+
+      results.parsed_response
+    end
+
+    #
+    # Get an Array of all the transcriptions
+    #
+    # @param [Integer] skip Number of transcriptions that will be skipped (optional)
+    # @param [Integer] top Number of transcriptions that will be included (optional)
+    #
+    # @return [Array[Hash]] Array of all the transcriptions. The transcriptions
+    # are Hashes parsed by HTTParty.
+    #
+    def get_transcriptions(skip: nil, top: nil)
+      results = get(
+        "/transcriptions",
+        {
+          skip: skip,
+          top: top
+        }.compact
+      )
+
+      results.parsed_response[:values]
+    end
+
     private
 
     def post(path, body)
@@ -50,6 +84,16 @@ module AzureSTT
       }
 
       response = self.class.post(path, options)
+      handle_response(response)
+    end
+
+    def get(path, body=nil)
+      options = {
+        headers: headers,
+        body: body
+      }.compact
+
+      response = self.class.get(path, options)
       handle_response(response)
     end
 
