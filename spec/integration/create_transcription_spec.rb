@@ -42,7 +42,7 @@ describe 'Create a transcription', integration: true do
             'Content-Type' => 'application/json'
           },
           status: 201,
-          body: read_fixture('create_transcription.json')
+          body: read_fixture('transcription.json')
         }
       end
 

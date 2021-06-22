@@ -8,7 +8,7 @@ describe AzureSTT::Parsers::Transcription do
   end
 
   let(:transcription_hash) do
-    load_json('create_transcription.json')
+    load_json('transcription.json')
   end
 
   describe '#attributes' do
