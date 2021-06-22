@@ -72,7 +72,7 @@ module AzureSTT
         }.compact
       )
 
-      results.parsed_response[:values]
+      results.parsed_response[:values] || results.parsed_response['values']
     end
 
     private

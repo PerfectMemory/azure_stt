@@ -98,7 +98,7 @@ describe AzureSTT::Client do
     end
 
     it 'returns the correct parsed JSON' do
-      expect(get_transcriptions).to eq(JSON.parse(json_response)[:values])
+      expect(get_transcriptions).to eq(JSON.parse(json_response)['values'])
     end
   end
 end

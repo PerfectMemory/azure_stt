@@ -16,22 +16,47 @@ module AzureSTT
       attribute :locale, Types::Coercible::String
       attribute :display_name, Types::Coercible::String
 
+      #
+      # Is the process still running ?
+      #
+      # @return [Boolean]
+      #
       def running?
         status == 'Running'
       end
 
+      #
+      # Is the status is failed ?
+      #
+      # @return [Boolean]
+      #
       def failed?
         status == 'Failed'
       end
 
+      #
+      # Is the process status is not_started ?
+      #
+      # @return [Boolean]
+      #
       def not_started?
         status == 'NotStarted'
       end
 
+      #
+      # Has the process succeeded ?
+      #
+      # @return [Boolean]
+      #
       def succeeded?
         status == 'Succeeded'
       end
 
+      #
+      # Is the process finished ? (Succeeded or failed)
+      #
+      # @return [Boolean]
+      #
       def finished?
         succeeded? || failed?
       end
@@ -60,7 +85,44 @@ module AzureSTT
               displayName: display_name
             }
           )
-          new(Parsers::Transcription.new(transcription_hash).attributes)
+          build_transcription_from_hash(transcription_hash)
+        end
+
+        #
+        # Get a transcription identified by an id.
+        #
+        # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription
+        #
+        # @param [String] id The identifier of the transcription
+        #
+        # @return [Transcription] the transcription
+        #
+        def get(id)
+          transcription_hash = AzureSTT.client.get_transcription(id)
+          build_transcription_from_hash(transcription_hash)
+        end
+
+        #
+        # Get multiple transcriptions
+        #
+        # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions
+        #
+        # @param [Integer] skip Number of transcriptions that will be skipped (optional)
+        # @param [Integer] top Number of transcriptions that will be included after skipping (optional)
+        #
+        # @return [Array[Transcription]]
+        #
+        def get_multiple(skip: nil, top: nil)
+          transcriptions_array = AzureSTT.client.get_transcriptions(skip: skip, top: top)
+          transcriptions_array.map do |transcription_hash|
+            build_transcription_from_hash(transcription_hash)
+          end
+        end
+
+        private
+
+        def build_transcription_from_hash(hash)
+          new(Parsers::Transcription.new(hash).attributes)
         end
       end
     end
