@@ -23,5 +23,6 @@ module AzureSTT
   #
   def self.configure
     yield configuration
+    @client = nil
   end
 end
