@@ -59,7 +59,7 @@ describe 'get the result of a transcription', integration: true do
   end
 
   it 'can get the result file and instantiate it' do
-    transcription = AzureSTT::Models::Transcription.get(id)
+    transcription = AzureSTT::Transcription.get(id)
     expect(transcription.results.first)
       .to be_an_instance_of(AzureSTT::Models::Result)
   end

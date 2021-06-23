@@ -20,8 +20,8 @@ describe AzureSTT::Parsers::Transcription do
       expect(attributes).to be_an_instance_of Hash
     end
 
-    it 'can create a AzureSTT::Models::Transcription' do
-      expect { AzureSTT::Models::Transcription.new(attributes) }
+    it 'can create a AzureSTT::Transcription' do
+      expect { AzureSTT::Transcription.new(attributes) }
         .not_to raise_error
     end
   end

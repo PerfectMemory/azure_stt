@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe AzureSTT::Models::Transcription do
+describe AzureSTT::Transcription do
   subject(:transcription) do
     build(:transcription)
   end
@@ -156,7 +156,7 @@ describe AzureSTT::Models::Transcription do
       expect(get_multiple).to be_an_instance_of Array
     end
 
-    it 'contains instances of AzureSTT::Models::Transcription' do
+    it 'contains instances of AzureSTT::Transcription' do
       expect(get_multiple)
         .to all(be_an_instance_of(described_class))
     end

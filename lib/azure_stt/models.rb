@@ -20,7 +20,6 @@ module AzureSTT
 end
 
 require_relative 'models/base'
-require_relative 'models/transcription'
 require_relative 'models/file'
 require_relative 'models/report'
 require_relative 'models/combined_recognized_phrases'

@@ -3,7 +3,7 @@
 require 'securerandom'
 
 FactoryBot.define do
-  factory :transcription, class: 'AzureSTT::Models::Transcription' do
+  factory :transcription, class: 'AzureSTT::Transcription' do
     id { SecureRandom.uuid }
     model do
       "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/models/base/#{SecureRandom.uuid}"

@@ -32,7 +32,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is no error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Models::Transcription.create(arguments)
+        AzureSTT::Transcription.create(arguments)
       end
 
       let(:response) do
@@ -48,7 +48,7 @@ describe 'Create a transcription', integration: true do
 
       it 'can create a transcription' do
         expect(transcription)
-          .to be_an_instance_of(AzureSTT::Models::Transcription)
+          .to be_an_instance_of(AzureSTT::Transcription)
       end
 
       it 'has the correct id' do
@@ -64,7 +64,7 @@ describe 'Create a transcription', integration: true do
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Models::Transcription.create(arguments)
+        AzureSTT::Transcription.create(arguments)
       end
 
       let(:response) do
@@ -83,7 +83,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is a 400 error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Models::Transcription.create(arguments)
+        AzureSTT::Transcription.create(arguments)
       end
 
       let(:response) do

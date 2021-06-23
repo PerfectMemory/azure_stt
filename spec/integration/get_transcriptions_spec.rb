@@ -18,7 +18,7 @@ describe 'Get a transcription', integration: true do
   context 'when there is no error' do
     describe 'transcription' do
       subject(:transcriptions) do
-        AzureSTT::Models::Transcription.get_multiple
+        AzureSTT::Transcription.get_multiple
       end
 
       let(:response) do
@@ -34,7 +34,7 @@ describe 'Get a transcription', integration: true do
 
       it 'can create an array of transcripitons' do
         expect(transcriptions)
-          .to all(be_an_instance_of(AzureSTT::Models::Transcription))
+          .to all(be_an_instance_of(AzureSTT::Transcription))
       end
     end
   end
@@ -42,7 +42,7 @@ describe 'Get a transcription', integration: true do
   context 'when there are no transcription' do
     describe 'transcription' do
       subject(:transcriptions) do
-        AzureSTT::Models::Transcription.get_multiple
+        AzureSTT::Transcription.get_multiple
       end
 
       let(:response) do
@@ -65,7 +65,7 @@ describe 'Get a transcription', integration: true do
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
       subject(:transcriptions) do
-        AzureSTT::Models::Transcription.get_multiple
+        AzureSTT::Transcription.get_multiple
       end
 
       let(:response) do
@@ -84,7 +84,7 @@ describe 'Get a transcription', integration: true do
   context 'when there is a 400 error' do
     describe 'transcription' do
       subject(:transcriptions) do
-        AzureSTT::Models::Transcription.get_multiple
+        AzureSTT::Transcription.get_multiple
       end
 
       let(:response) do
