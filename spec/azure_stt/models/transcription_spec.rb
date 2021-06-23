@@ -264,7 +264,7 @@ describe AzureSTT::Models::Transcription do
     end
 
     it 'returns a AzureSTT::Models::Client' do
-      expect(results).to all( be_an_instance_of(AzureSTT::Models::Result) )
+      expect(results).to all(be_an_instance_of(AzureSTT::Models::Result))
     end
   end
 end
