@@ -9,7 +9,6 @@ describe 'get the result of a transcription', integration: true do
       config.region = 'region'
       config.subscription_key = 'ljdhfkjfh'
     end
-    AzureSTT.instance_variable_set(:@client, nil)
     stub_request(:get,
                  "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
       .to_return(get_transcription_response)
@@ -59,7 +58,7 @@ describe 'get the result of a transcription', integration: true do
   end
 
   it 'can get the result file and instantiate it' do
-    transcription = AzureSTT::Transcription.get(id)
+    transcription = AzureSTT::Session.new.get_transcription(id)
     expect(transcription.results.first)
       .to be_an_instance_of(AzureSTT::Models::Result)
   end

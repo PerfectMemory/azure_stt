@@ -17,7 +17,7 @@ module AzureSTT
     # @param [String] subscription_key The subscription, optional, default is
     # read from configuration
     #
-    def initialize(region: AzureSTT.configuration.subscription_key,
+    def initialize(region: AzureSTT.configuration.region,
                    subscription_key: AzureSTT.configuration.subscription_key)
       @client = Client.new(region: region, subscription_key: subscription_key)
     end
@@ -73,7 +73,7 @@ module AzureSTT
     #
     # @return [Array[Models::Transcription]]
     #
-    def get_trasncriptions(skip: nil, top: nil)
+    def get_transcriptions(skip: nil, top: nil)
       transcriptions_array = client.get_transcriptions(skip: skip, top: top)
       transcriptions_array.map do |transcription_hash|
         build_transcription_from_hash(transcription_hash)

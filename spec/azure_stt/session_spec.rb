@@ -97,7 +97,7 @@ describe AzureSTT::Session do
 
   describe '#get_transcriptions' do
     subject(:get_transcriptions) do
-      session.get_trasncriptions
+      session.get_transcriptions
     end
 
     let(:transcriptions_array) do

@@ -23,7 +23,6 @@ describe 'Create a transcription', integration: true do
       config.region = 'region'
       config.subscription_key = 'ljdhfkjfh'
     end
-    AzureSTT.instance_variable_set(:@client, nil)
     stub_request(:post,
                  'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
       .to_return(response)
@@ -32,7 +31,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is no error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Transcription.create(arguments)
+        AzureSTT::Session.new.create_transcription(arguments)
       end
 
       let(:response) do
@@ -48,7 +47,7 @@ describe 'Create a transcription', integration: true do
 
       it 'can create a transcription' do
         expect(transcription)
-          .to be_an_instance_of(AzureSTT::Transcription)
+          .to be_an_instance_of(AzureSTT::Models::Transcription)
       end
 
       it 'has the correct id' do
@@ -64,7 +63,7 @@ describe 'Create a transcription', integration: true do
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Transcription.create(arguments)
+        AzureSTT::Session.new.create_transcription(arguments)
       end
 
       let(:response) do
@@ -83,7 +82,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is a 400 error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Transcription.create(arguments)
+        AzureSTT::Session.new.create_transcription(arguments)
       end
 
       let(:response) do
