@@ -64,7 +64,7 @@ module AzureSTT
       end
 
       #
-      # Get the report of a transcription from transcriptions/{id}/files route
+      # Get the report of a transcription from transcriptions/id/files route
       #
       # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles/console
       #
@@ -74,7 +74,16 @@ module AzureSTT
         @report ||= retrieve_report
       end
 
-      def results; end
+      #
+      # Get the results of a transcription. The results are the files containing
+      # the speech-to-text. As a transcription process can have multiple files,
+      # the results are in an Array.
+      #
+      # @return [Array[Models::Result]]
+      #
+      def results
+        @results ||= retrieve_results
+      end
 
       #
       # Reinterrogate the API to refresh a transcription.
@@ -86,35 +95,6 @@ module AzureSTT
         @report = nil
         @files = nil
         @results = nil
-      end
-
-      private
-
-      #
-      # All the files of a transcription
-      #
-      # @return [Array[File]] The files of the transcription
-      #
-      def files
-        @files ||= retrieve_files
-      end
-
-      #
-      # Interrogate the API to retrieve the files
-      #
-      # @return [Array[Files]] The files of the transcription
-      #
-      def retrieve_files
-        files_array = AzureSTT.client.get_transcription_files(id)
-        files_array.map do |file_hash|
-          File.new(Parsers::File.new(file_hash).attributes)
-        end
-      end
-
-      def retrieve_report
-        report_file = files.find { |f| f.kind == 'TranscriptionReport' }
-        file_hash = AzureSTT.client.get_file(report_file.content_url)
-        Report.new(Parsers::Report.new(file_hash).attributes)
       end
 
       class << self
@@ -180,6 +160,43 @@ module AzureSTT
 
         def build_transcription_from_hash(hash)
           new(Parsers::Transcription.new(hash).attributes)
+        end
+      end
+
+      private
+
+      #
+      # All the files of a transcription
+      #
+      # @return [Array[File]] The files of the transcription
+      #
+      def files
+        @files ||= retrieve_files
+      end
+
+      #
+      # Interrogate the API to retrieve the files
+      #
+      # @return [Array[Files]] The files of the transcription
+      #
+      def retrieve_files
+        files_array = AzureSTT.client.get_transcription_files(id)
+        files_array.map do |file_hash|
+          File.new(Parsers::File.new(file_hash).attributes)
+        end
+      end
+
+      def retrieve_report
+        report_file = files.find { |f| f.kind == 'TranscriptionReport' }
+        file_hash = AzureSTT.client.get_file(report_file.content_url)
+        Report.new(Parsers::Report.new(file_hash).attributes)
+      end
+
+      def retrieve_results
+        results_files = files.select { |f| f.kind == 'Transcription' }
+        results_files.map do |result_file|
+          result_hash = AzureSTT.client.get_file(result_file.content_url)
+          Result.new(Parsers::Result.new(result_hash).attributes)
         end
       end
     end

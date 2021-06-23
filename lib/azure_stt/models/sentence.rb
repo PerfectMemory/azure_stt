@@ -11,7 +11,7 @@ module AzureSTT
       attribute :itn, Types::Coercible::String
       attribute :masked_itn, Types::Coercible::String
       attribute :display, Types::Coercible::String
-      attribute? :words, Types::Aray.of(Word)
+      attribute? :words, Types::Array.of(Word).default([].freeze)
     end
   end
 end

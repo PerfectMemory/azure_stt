@@ -226,4 +226,45 @@ describe AzureSTT::Models::Transcription do
       expect(report).to be_an_instance_of(AzureSTT::Models::Report)
     end
   end
+
+  describe '#results' do
+    subject(:results) do
+      transcription.results
+    end
+
+    let(:files_array) do
+      load_json('files.json')[:values]
+    end
+
+    let(:result_hash) do
+      load_json('result.json')
+    end
+
+    before do
+      allow(AzureSTT.client)
+        .to receive(:get_transcription_files)
+        .with(transcription.id)
+        .and_return(files_array)
+      allow(AzureSTT.client)
+        .to receive(:get_file)
+        .with('https://path1.json')
+        .and_return(result_hash)
+    end
+
+    it 'calls the client to have the files' do
+      results
+      expect(AzureSTT.client)
+        .to have_received(:get_transcription_files)
+    end
+
+    it 'calls the client to get the results' do
+      results
+      expect(AzureSTT.client)
+        .to have_received(:get_file)
+    end
+
+    it 'returns a AzureSTT::Models::Client' do
+      expect(results).to all( be_an_instance_of(AzureSTT::Models::Result) )
+    end
+  end
 end

@@ -3,11 +3,11 @@
 module AzureSTT
   module Models
     #
-    # Model class for the combinedRecognizedPhrase field in the results of
+    # Model class for the combinedRecognizedPhrases field in the results of
     # the transcriptions
     #
-    class CombinedRecognizedPhrase
-      attributes :channel, Types::Coercible::Integer
+    class CombinedRecognizedPhrases < Base
+      attribute :channel, Types::Coercible::Integer
       attribute :lexical, Types::Coercible::String
       attribute :itn, Types::Coercible::String
       attribute :masked_itn, Types::Coercible::String

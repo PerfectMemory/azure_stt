@@ -5,7 +5,7 @@ module AzureSTT
     #
     # Model for a word. A word is optional in a sentence
     #
-    class Word
+    class Word < Base
       attribute :word, Types::Coercible::String
       attribute? :offset, Types::Coercible::String
       attribute? :duration, Types::Coercible::String

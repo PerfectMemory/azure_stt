@@ -12,7 +12,7 @@ module AzureSTT
       attribute :duration_in_ticks, Types::Coercible::Integer
       attribute :duration, Types::Coercible::String
       attribute :combined_recognized_phrases,
-                Types::Array.of(CombinedRecognizedPhrase).default([].freeze)
+                Types::Array.of(CombinedRecognizedPhrases).default([].freeze)
       attribute :recognized_phrases,
                 Types::Array.of(RecognizedPhrase).default([].freeze)
     end
