@@ -31,7 +31,7 @@ describe 'Get a transcription', integration: true do
           {
             'Content-Type' => 'application/json'
           },
-          status: 201,
+          status: 200,
           body: read_fixture('transcription.json')
         }
       end
