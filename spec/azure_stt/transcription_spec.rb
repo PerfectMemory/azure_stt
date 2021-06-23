@@ -15,7 +15,6 @@ describe AzureSTT::Transcription do
     its(:running?)      { is_expected.to be true  }
     its(:finished?)     { is_expected.to be false }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be false }
   end
 
@@ -27,7 +26,6 @@ describe AzureSTT::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be true  }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be true  }
   end
 
@@ -39,7 +37,6 @@ describe AzureSTT::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be false }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be true  }
     its(:succeeded?)    { is_expected.to be false }
   end
 
@@ -51,7 +48,6 @@ describe AzureSTT::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be true  }
     its(:failed?)       { is_expected.to be true  }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be false }
   end
 
@@ -137,7 +133,7 @@ describe AzureSTT::Transcription do
     end
 
     let(:transcriptions_array) do
-      load_json('transcriptions.json')[:values]
+      load_json('transcriptions.json')['values']
     end
 
     before do
@@ -198,7 +194,7 @@ describe AzureSTT::Transcription do
     end
 
     let(:files_array) do
-      load_json('files.json')[:values]
+      load_json('files.json')['values']
     end
 
     let(:report_hash) do
@@ -233,7 +229,7 @@ describe AzureSTT::Transcription do
     end
 
     let(:files_array) do
-      load_json('files.json')[:values]
+      load_json('files.json')['values']
     end
 
     let(:result_hash) do

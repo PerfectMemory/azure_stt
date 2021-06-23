@@ -36,15 +36,6 @@ module AzureSTT
     end
 
     #
-    # Is the process status is not_started ?
-    #
-    # @return [Boolean]
-    #
-    def not_started?
-      status == 'NotStarted'
-    end
-
-    #
     # Has the process succeeded ?
     #
     # @return [Boolean]
