@@ -6,16 +6,81 @@ module AzureSTT
   # create and retrieve the transcriptions.
   #
   class Transcription < Models::Base
+    #
+    # The id of the transcription
+    #
+    # @!attribute [r] id
+    #   @return [Types::Coercible::String]
     attribute :id, Types::Coercible::String
+
+    #
+    # The model url of the transcription
+    #
+    # @!attribute [r] model
+    #   @return [Types::Coercible::String]
     attribute :model, Types::Coercible::String
+
+    #
+    # The properties of the transcription
+    #
+    # @!attribute [r] properties
+    #   @return [Types::Hash]
     attribute :properties, Types::Hash
+
+    #
+    # The links for the transcription (usually just a link to the files route)
+    #
+    # @!attribute [r] links
+    #   @return [Types::Hash]
     attribute :links, Types::Hash
+
+    #
+    # The last date the transcription has been updated
+    #
+    # @!attribute [r] last_action_date_time
+    #   @return [Types::Date]
     attribute :last_action_date_time, Types::Date
+
+    #
+    # The date the transcription has been created
+    #
+    # @!attribute [r] created_date_time
+    #   @return [Types::Date]
     attribute :created_date_time, Types::Date
+
+    #
+    # The status of the transcription
+    #
+    # @!attribute [r] status
+    #   @return [Types::Coercible::String]
     attribute :status, Types::Coercible::String
+
+    #
+    # The locale of the transcription. Example: 'en-US'
+    #
+    # @!attribute [r] locale
+    #   @return [Types::Coercible::String]
     attribute :locale, Types::Coercible::String
+
+    #
+    # The displayName of the transcription, not unique
+    #
+    # @!attribute [r] display_name
+    #   @return [Types::Coercible::String]
     attribute :display_name, Types::Coercible::String
+
+    #
+    # The transcription's files that can be retrieve
+    #
+    # @!attribute [r] files
+    #   @return [Types::Array.of(File)]
     attribute? :files, Types::Array.of(File).default([].freeze)
+
+    #
+    # The client used to interrogate the API
+    #
+    # @!attribute [r] client
+    #   @return [AzureSTT::Client]
     attribute :client, Types.Instance(AzureSTT::Client)
 
     #

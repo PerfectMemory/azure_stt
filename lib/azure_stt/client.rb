@@ -107,6 +107,14 @@ module AzureSTT
 
     private
 
+    #
+    # Make a post request by giving a path and a body
+    #
+    # @param [String] path the path, which is added to the base_uri
+    # @param [String] body the body of the request
+    #
+    # @return [HTTParty::Response]
+    #
     def post(path, body)
       options = {
         headers: headers,
@@ -117,10 +125,17 @@ module AzureSTT
       handle_response(response)
     end
 
-    def get(path, body = nil)
+    #
+    # Make a get request to the API.
+    #
+    # @param [String] path the path, which is added to the base_uri
+    # @param [Hash] parameters The parameters you want to add to the headers (empty by default)
+    #
+    # @return [HTTParty::Response]
+    #
+    def get(path, parameters = {})
       options = {
-        headers: headers,
-        body: body
+        headers: headers.merge(parameters)
       }.compact
 
       response = self.class.get(path, options)

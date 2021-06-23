@@ -26,6 +26,11 @@ module AzureSTT
 
       private
 
+      #
+      # Build the array of Models::CombinedRecognizedPhrases
+      #
+      # @return [Array[Models::CombinedRecognizedPhrases]]
+      #
       def build_combined_recognized_phrases
         hash['combinedRecognizedPhrases'].map do |combined_phrases_hash|
           Models::CombinedRecognizedPhrases.new(
@@ -34,6 +39,11 @@ module AzureSTT
         end
       end
 
+      #
+      # Build the array of Models::RecognizedPhrase in a Models::Result
+      #
+      # @return [Array[RecognizedPhrase]]
+      #
       def build_recognized_phrases
         hash['recognizedPhrases'].map do |recognized_phrase_hash|
           Models::RecognizedPhrase.new(

@@ -8,6 +8,11 @@ module AzureSTT
     class RecognizedPhrase < Base
       protected
 
+      #
+      # Build a hash to instantiate a Models::RecognizedPhrase
+      #
+      # @return [Hash]
+      #
       def build_attributes
         {
           recognition_status: hash['recognitionStatus'],
@@ -23,6 +28,11 @@ module AzureSTT
 
       private
 
+      #
+      # Build the n_best fiels if the RecognizedPhrase.
+      #
+      # @return [Array[Models::Sentence]]
+      #
       def build_n_best
         hash['nBest'].map do |sentence_hash|
           Models::Sentence.new(

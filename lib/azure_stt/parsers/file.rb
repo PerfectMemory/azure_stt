@@ -8,8 +8,6 @@ module AzureSTT
     class File < Base
       protected
 
-      # rubocop:disable Metrics/AbcSize
-
       #
       # Build a hash which can create a Models::File
       #
@@ -25,7 +23,6 @@ module AzureSTT
           content_url: hash.dig('links', 'contentUrl')
         }
       end
-      # rubocop:enable Metrics/AbcSize
     end
   end
 end

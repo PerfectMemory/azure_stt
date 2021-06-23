@@ -8,6 +8,11 @@ module AzureSTT
     class Word < Base
       protected
 
+      #
+      # Build the attributes needed to instantiate a Models::Word
+      #
+      # @return [Hash]
+      #
       def build_attributes
         {
           word: hash['word'],

@@ -10,19 +10,29 @@ module AzureSTT
     class Sentence < Base
       protected
 
+      #
+      # Build the attributes needed to instantiate a Models::Sentence
+      #
+      # @return [Hash]
+      #
       def build_attributes
         {
           confidence: hash['confidence'],
           lexical: hash['lexical'],
           itn: hash['itn'],
           masked_itn: hash['maskedITN'],
-          display: hash['display'],
+          transcript: hash['display'],
           words: build_words
         }.compact
       end
 
       private
 
+      #
+      # Build the words. Returns nil if they are not defined
+      #
+      # @return [Array[Word]]
+      #
       def build_words
         hash['words']&.map do |word_hash|
           Models::Word.new(
