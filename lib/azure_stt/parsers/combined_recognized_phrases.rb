@@ -11,11 +11,11 @@ module AzureSTT
 
       def build_attributes
         {
-          channel: hash[:channel],
-          lexical: hash[:lexical],
-          itn: hash[:itn],
-          masked_itn: hash[:maskedITN],
-          display: hash[:display]
+          channel: hash['channel'],
+          lexical: hash['lexical'],
+          itn: hash['itn'],
+          masked_itn: hash['maskedITN'],
+          display: hash['display']
         }.compact
       end
     end

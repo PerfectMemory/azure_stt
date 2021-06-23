@@ -72,7 +72,7 @@ module AzureSTT
         }.compact
       )
 
-      results.parsed_response[:values] || results.parsed_response['values']
+      results.parsed_response['values']
     end
 
     #
@@ -87,7 +87,7 @@ module AzureSTT
     def get_transcription_files(id)
       results = get("/transcriptions/#{id}/files")
 
-      results.parsed_response[:values] || results.parsed_response['values']
+      results.parsed_response['values']
     end
 
     #

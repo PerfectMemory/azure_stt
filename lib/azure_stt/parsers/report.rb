@@ -15,9 +15,9 @@ module AzureSTT
       #
       def build_attributes
         {
-          successful_transcriptions_count: hash[:successfulTranscriptionsCount],
-          failed_transcriptions_count: hash[:failedTranscriptionsCount],
-          details: hash[:details]
+          successful_transcriptions_count: hash['successfulTranscriptionsCount'],
+          failed_transcriptions_count: hash['failedTranscriptionsCount'],
+          details: hash['details']
         }
       end
     end

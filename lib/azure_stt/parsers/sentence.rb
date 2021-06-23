@@ -12,11 +12,11 @@ module AzureSTT
 
       def build_attributes
         {
-          confidence: hash[:confidence],
-          lexical: hash[:lexical],
-          itn: hash[:itn],
-          masked_itn: hash[:maskedITN],
-          display: hash[:display],
+          confidence: hash['confidence'],
+          lexical: hash['lexical'],
+          itn: hash['itn'],
+          masked_itn: hash['maskedITN'],
+          display: hash['display'],
           words: build_words
         }.compact
       end
@@ -24,7 +24,7 @@ module AzureSTT
       private
 
       def build_words
-        hash[:words]&.map do |word_hash|
+        hash['words']&.map do |word_hash|
           Models::Word.new(
             Word.new(word_hash).attributes
           )

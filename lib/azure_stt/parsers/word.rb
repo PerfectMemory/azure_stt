@@ -10,12 +10,12 @@ module AzureSTT
 
       def build_attributes
         {
-          word: hash[:word],
-          offset: hash[:offset],
-          duration: hash[:duration],
-          offset_in_ticks: hash[:offsetInTicks],
-          duration_in_ticks: hash[:durationInTicks],
-          confidence: hash[:confidence]
+          word: hash['word'],
+          offset: hash['offset'],
+          duration: hash['duration'],
+          offset_in_ticks: hash['offsetInTicks'],
+          duration_in_ticks: hash['durationInTicks'],
+          confidence: hash['confidence']
         }.compact
       end
     end

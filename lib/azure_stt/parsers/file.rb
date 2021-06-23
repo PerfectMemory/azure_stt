@@ -17,12 +17,12 @@ module AzureSTT
       #
       def build_attributes
         {
-          id: hash[:self].split('/').last,
-          name: hash[:name],
-          kind: hash[:kind],
-          properties: hash[:properties],
-          created_date_time: Date.parse(hash[:createdDateTime]),
-          content_url: hash[:links].transform_keys(&:to_sym)[:contentUrl]
+          id: hash['self'].split('/').last,
+          name: hash['name'],
+          kind: hash['kind'],
+          properties: hash['properties'],
+          created_date_time: Date.parse(hash['createdDateTime']),
+          content_url: hash.dig('links', 'contentUrl')
         }
       end
       # rubocop:enable Metrics/AbcSize

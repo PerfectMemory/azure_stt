@@ -10,13 +10,13 @@ module AzureSTT
 
       def build_attributes
         {
-          recognition_status: hash[:recognitionStatus],
-          channel: hash[:channel],
-          speaker: hash[:speaker],
-          offset: hash[:offset],
-          duration: hash[:duration],
-          offset_in_ticks: hash[:offsetInTicks],
-          duration_in_ticks: hash[:durationInTicks],
+          recognition_status: hash['recognitionStatus'],
+          channel: hash['channel'],
+          speaker: hash['speaker'],
+          offset: hash['offset'],
+          duration: hash['duration'],
+          offset_in_ticks: hash['offsetInTicks'],
+          duration_in_ticks: hash['durationInTicks'],
           n_best: build_n_best
         }.compact
       end
@@ -24,7 +24,7 @@ module AzureSTT
       private
 
       def build_n_best
-        hash[:nBest].map do |sentence_hash|
+        hash['nBest'].map do |sentence_hash|
           Models::Sentence.new(
             Sentence.new(sentence_hash).attributes
           )
