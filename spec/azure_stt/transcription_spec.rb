@@ -51,143 +51,6 @@ describe AzureSTT::Transcription do
     its(:succeeded?)    { is_expected.to be false }
   end
 
-  describe '#create' do
-    subject(:create) do
-      described_class.create(params)
-    end
-
-    let(:params) do
-      {
-        content_urls: ['whatever.ogg'],
-        properties: {},
-        locale: 'en-US',
-        display_name: ''
-      }
-    end
-
-    let(:params_client) do
-      {
-        contentUrls: params[:content_urls],
-        properties: params[:properties],
-        locale: params[:locale],
-        displayName: params[:display_name]
-      }
-    end
-
-    let(:transcription_hash) do
-      load_json('transcription.json')
-    end
-
-    before do
-      allow(AzureSTT.client)
-        .to receive(:create_transcription)
-        .with(params_client)
-        .and_return(transcription_hash)
-    end
-
-    it 'calls the client' do
-      create
-      expect(AzureSTT.client)
-        .to have_received(:create_transcription)
-    end
-
-    it 'can create a transcription using the parser' do
-      expect(create).to be_an_instance_of described_class
-    end
-  end
-
-  describe '#get' do
-    subject(:get) do
-      described_class.get(id)
-    end
-
-    let(:id) do
-      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
-    end
-
-    let(:transcription_hash) do
-      load_json('transcription.json')
-    end
-
-    before do
-      allow(AzureSTT.client)
-        .to receive(:get_transcription)
-        .with(id)
-        .and_return(transcription_hash)
-    end
-
-    it 'calls the client' do
-      get
-      expect(AzureSTT.client)
-        .to have_received(:get_transcription)
-    end
-
-    it 'can create a transcription using the parser' do
-      expect(get).to be_an_instance_of described_class
-    end
-  end
-
-  describe '#get_multiple' do
-    subject(:get_multiple) do
-      described_class.get_multiple
-    end
-
-    let(:transcriptions_array) do
-      load_json('transcriptions.json')['values']
-    end
-
-    before do
-      allow(AzureSTT.client)
-        .to receive(:get_transcriptions)
-        .and_return(transcriptions_array)
-    end
-
-    it 'calls the client' do
-      get_multiple
-      expect(AzureSTT.client)
-        .to have_received(:get_transcriptions)
-    end
-
-    it 'returns an array' do
-      expect(get_multiple).to be_an_instance_of Array
-    end
-
-    it 'contains instances of AzureSTT::Transcription' do
-      expect(get_multiple)
-        .to all(be_an_instance_of(described_class))
-    end
-  end
-
-  describe '#refresh!' do
-    subject(:refresh) do
-      transcription.refresh!
-    end
-
-    let(:transcription_hash) do
-      load_json('transcription.json')
-    end
-
-    before do
-      allow(AzureSTT.client)
-        .to receive(:get_transcription)
-        .with(transcription.id)
-        .and_return(transcription_hash)
-    end
-
-    it 'calls the client' do
-      refresh
-      expect(AzureSTT.client)
-        .to have_received(:get_transcription)
-    end
-
-    it 'updates the attributes' do
-      expect do
-        refresh
-      end.to change(transcription, :last_action_date_time)
-        .to(Date.parse('"2019-01-07T11:36:07Z"'))
-    end
-  end
-
   describe '#report' do
     subject(:report) do
       transcription.report
@@ -202,11 +65,11 @@ describe AzureSTT::Transcription do
     end
 
     before do
-      allow(AzureSTT.client)
+      allow(transcription.client)
         .to receive(:get_transcription_files)
         .with(transcription.id)
         .and_return(files_array)
-      allow(AzureSTT.client)
+      allow(transcription.client)
         .to receive(:get_file)
         .with('https://path.json')
         .and_return(report_hash)
@@ -214,7 +77,7 @@ describe AzureSTT::Transcription do
 
     it 'calls the client' do
       report
-      expect(AzureSTT.client)
+      expect(transcription.client)
         .to have_received(:get_transcription_files)
     end
 
@@ -237,11 +100,11 @@ describe AzureSTT::Transcription do
     end
 
     before do
-      allow(AzureSTT.client)
+      allow(transcription.client)
         .to receive(:get_transcription_files)
         .with(transcription.id)
         .and_return(files_array)
-      allow(AzureSTT.client)
+      allow(transcription.client)
         .to receive(:get_file)
         .with('https://path1.json')
         .and_return(result_hash)
@@ -249,13 +112,13 @@ describe AzureSTT::Transcription do
 
     it 'calls the client to have the files' do
       results
-      expect(AzureSTT.client)
+      expect(transcription.client)
         .to have_received(:get_transcription_files)
     end
 
     it 'calls the client to get the results' do
       results
-      expect(AzureSTT.client)
+      expect(transcription.client)
         .to have_received(:get_file)
     end
 

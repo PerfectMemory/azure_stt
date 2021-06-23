@@ -16,6 +16,7 @@ module AzureSTT
     attribute :locale, Types::Coercible::String
     attribute :display_name, Types::Coercible::String
     attribute? :files, Types::Array.of(File).default([].freeze)
+    attribute :client, Types.Instance(AzureSTT::Client)
 
     #
     # Is the process still running ?
@@ -75,84 +76,6 @@ module AzureSTT
       @results ||= retrieve_results
     end
 
-    #
-    # Reinterrogate the API to refresh a transcription.
-    #
-    def refresh!
-      transcription_hash = AzureSTT.client.get_transcription(id)
-      parsed_attributes = Parsers::Transcription.new(transcription_hash).attributes
-      @attributes = self.class.schema.call_unsafe(parsed_attributes)
-      @report = nil
-      @files = nil
-      @results = nil
-    end
-
-    class << self
-      #
-      # Create a transcription by calling the API.
-      #
-      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription
-      #
-      # @param [Array[String]] content_urls The urls of your files
-      # @param [Hash] properties The properties you want to use for the
-      # transcription
-      # @param [String] locale The locale of the contained data
-      # @param [String] display_name The name of the transcription (can be
-      # left empty)
-      #
-      # @return [Transcription] The transcription
-      #
-      def create(content_urls:, properties:, locale:, display_name:)
-        transcription_hash = AzureSTT.client.create_transcription(
-          {
-            contentUrls: content_urls,
-            properties: properties,
-            locale: locale,
-            displayName: display_name
-          }
-        )
-        build_transcription_from_hash(transcription_hash)
-      end
-
-      #
-      # Get a transcription identified by an id.
-      #
-      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription
-      #
-      # @param [String] id The identifier of the transcription
-      #
-      # @return [Transcription] the transcription
-      #
-      def get(id)
-        transcription_hash = AzureSTT.client.get_transcription(id)
-        build_transcription_from_hash(transcription_hash)
-      end
-
-      #
-      # Get multiple transcriptions
-      #
-      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions
-      #
-      # @param [Integer] skip Number of transcriptions that will be skipped (optional)
-      # @param [Integer] top Number of transcriptions that will be included after skipping
-      # (optional)
-      #
-      # @return [Array[Transcription]]
-      #
-      def get_multiple(skip: nil, top: nil)
-        transcriptions_array = AzureSTT.client.get_transcriptions(skip: skip, top: top)
-        transcriptions_array.map do |transcription_hash|
-          build_transcription_from_hash(transcription_hash)
-        end
-      end
-
-      private
-
-      def build_transcription_from_hash(hash)
-        new(Parsers::Transcription.new(hash).attributes)
-      end
-    end
-
     private
 
     #
@@ -170,7 +93,7 @@ module AzureSTT
     # @return [Array[Files]] The files of the transcription
     #
     def retrieve_files
-      files_array = AzureSTT.client.get_transcription_files(id)
+      files_array = client.get_transcription_files(id)
       files_array.map do |file_hash|
         Models::File.new(Parsers::File.new(file_hash).attributes)
       end
@@ -178,14 +101,14 @@ module AzureSTT
 
     def retrieve_report
       report_file = files.find { |f| f.kind == 'TranscriptionReport' }
-      file_hash = AzureSTT.client.get_file(report_file.content_url)
+      file_hash = client.get_file(report_file.content_url)
       Models::Report.new(Parsers::Report.new(file_hash).attributes)
     end
 
     def retrieve_results
       results_files = files.select { |f| f.kind == 'Transcription' }
       results_files.map do |result_file|
-        result_hash = AzureSTT.client.get_file(result_file.content_url)
+        result_hash = client.get_file(result_file.content_url)
         Models::Result.new(Parsers::Result.new(result_hash).attributes)
       end
     end
