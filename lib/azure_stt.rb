@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-# Top level module for Azure Batch Transcription
+# Top level module for AzureSTT
 #
 module AzureSTT
 end
@@ -10,7 +10,6 @@ require_relative 'azure_stt/configuration'
 require_relative 'azure_stt/errors'
 require_relative 'azure_stt/client'
 require_relative 'azure_stt/models'
-require_relative 'azure_stt/transcription'
 require_relative 'azure_stt/parsers'
 require_relative 'azure_stt/session'
 

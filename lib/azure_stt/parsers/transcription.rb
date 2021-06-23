@@ -3,7 +3,7 @@
 module AzureSTT
   module Parsers
     #
-    # Parse a transcription from the call to the API to a Transcription
+    # Parse a transcription from the call to the API to a Models::Transcription
     #
     class Transcription < Base
       protected
@@ -11,7 +11,7 @@ module AzureSTT
       # rubocop:disable Metrics/AbcSize
 
       #
-      # Build a hash which can create a Transcription
+      # Build a hash which can create a Models::Transcription
       #
       # @return [Hash] transcription's initializer parameters
       #

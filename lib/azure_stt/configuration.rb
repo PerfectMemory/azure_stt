@@ -10,7 +10,7 @@ module AzureSTT
   end
 
   #
-  # Get the configuration for Azure Batch Transcription
+  # Get the configuration for AzureSTT
   #
   # @return [Configuration]
   #

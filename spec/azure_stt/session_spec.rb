@@ -58,7 +58,8 @@ describe AzureSTT::Session do
     end
 
     it 'can create a transcription using the parser' do
-      expect(create_transcription).to be_an_instance_of AzureSTT::Transcription
+      expect(create_transcription)
+        .to be_an_instance_of AzureSTT::Models::Transcription
     end
   end
 
@@ -89,7 +90,8 @@ describe AzureSTT::Session do
     end
 
     it 'can create a transcription using the parser' do
-      expect(get_transcription).to be_an_instance_of AzureSTT::Transcription
+      expect(get_transcription)
+        .to be_an_instance_of AzureSTT::Models::Transcription
     end
   end
 
@@ -118,9 +120,9 @@ describe AzureSTT::Session do
       expect(get_transcriptions).to be_an_instance_of Array
     end
 
-    it 'contains instances of AzureSTT::Transcription' do
+    it 'contains instances of AzureSTT::Models::Transcription' do
       expect(get_transcriptions)
-        .to all(be_an_instance_of(AzureSTT::Transcription))
+        .to all(be_an_instance_of(AzureSTT::Models::Transcription))
     end
   end
 end

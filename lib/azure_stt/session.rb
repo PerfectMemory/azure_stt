@@ -34,7 +34,7 @@ module AzureSTT
     # @param [String] display_name The name of the transcription (can be
     # left empty)
     #
-    # @return [Transcription] The transcription
+    # @return [Models::Transcription] The transcription
     #
     def create_transcription(content_urls:, properties:, locale:, display_name:)
       transcription_hash = client.create_transcription(
@@ -55,7 +55,7 @@ module AzureSTT
     #
     # @param [String] id The identifier of the transcription
     #
-    # @return [Transcription] the transcription
+    # @return [Models::Transcription] the transcription
     #
     def get_transcription(id)
       transcription_hash = client.get_transcription(id)
@@ -71,7 +71,7 @@ module AzureSTT
     # @param [Integer] top Number of transcriptions that will be included after skipping
     # (optional)
     #
-    # @return [Array[Transcription]]
+    # @return [Array[Models::Transcription]]
     #
     def get_trasncriptions(skip: nil, top: nil)
       transcriptions_array = client.get_transcriptions(skip: skip, top: top)
@@ -92,7 +92,7 @@ module AzureSTT
     # @return [Models::Transcription] the created transcription
     #
     def build_transcription_from_hash(hash)
-      Transcription.new(
+      Models::Transcription.new(
         Parsers::Transcription.new(hash).attributes.merge({ client: client })
       )
     end

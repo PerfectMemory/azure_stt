@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe AzureSTT::Transcription do
+describe AzureSTT::Models::Transcription do
   subject(:transcription) do
     build(:transcription)
   end

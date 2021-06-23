@@ -8,7 +8,7 @@ describe AzureSTT do
       described_class.configuration
     end
 
-    it 'is an instance of AzureBatchTranscription::Configuration' do
+    it 'is an instance of AzureSTT::Configuration' do
       expect(configuration)
         .to be_an_instance_of AzureSTT::Configuration
     end
