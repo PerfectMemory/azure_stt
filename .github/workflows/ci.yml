@@ -1,15 +1,15 @@
-name: Ruby
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ '**' ]
   pull_request:
     branches: [ main ]
 
 jobs:
   test:
 
-    runs-on: ubuntu-latest
+    runs-on: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - uses: actions/checkout@v2
