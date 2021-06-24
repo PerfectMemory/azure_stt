@@ -51,6 +51,22 @@ module AzureSTT
       # @!attribute [r] content_url
       #   @return [Types::Coercible::String]
       attribute :content_url, Types::Coercible::String
+
+      #
+      # The client used to interrogate the API to get the content of the file
+      #
+      # @!attribute [r] client
+      #   @return [AzureSTT::Client]
+      attribute :client, Types.Instance(AzureSTT::Client)
+
+      #
+      # Returns the result of the request to the file with the url content_url
+      #
+      # @return [Hash]
+      #
+      def content
+        client.get_file(content_url)
+      end
     end
   end
 end

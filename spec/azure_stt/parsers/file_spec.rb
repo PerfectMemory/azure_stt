@@ -11,6 +11,10 @@ describe AzureSTT::Parsers::File do
     load_json('file.json')
   end
 
+  let(:client) do
+    AzureSTT::Client.new(region: 'region', subscription_key: 'dkjsdhfk')
+  end
+
   describe '#attributes' do
     subject(:attributes) do
       parser.attributes
@@ -21,7 +25,7 @@ describe AzureSTT::Parsers::File do
     end
 
     it 'can create a AzureSTT::Models::File' do
-      expect { AzureSTT::Models::File.new(attributes) }
+      expect { AzureSTT::Models::File.new(attributes.merge({ client: client })) }
         .not_to raise_error
     end
   end

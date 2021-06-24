@@ -161,20 +161,22 @@ module AzureSTT
       def retrieve_files
         files_array = client.get_transcription_files(id)
         files_array.map do |file_hash|
-          Models::File.new(Parsers::File.new(file_hash).attributes)
+          Models::File.new(
+            Parsers::File.new(file_hash).attributes.merge({ client: client })
+          )
         end
       end
 
       def retrieve_report
         report_file = files.find { |f| f.kind == 'TranscriptionReport' }
-        file_hash = client.get_file(report_file.content_url)
+        file_hash = report_file.content
         Models::Report.new(Parsers::Report.new(file_hash).attributes)
       end
 
       def retrieve_results
         results_files = files.select { |f| f.kind == 'Transcription' }
         results_files.map do |result_file|
-          result_hash = client.get_file(result_file.content_url)
+          result_hash = result_file.content
           Models::Result.new(Parsers::Result.new(result_hash).attributes)
         end
       end
