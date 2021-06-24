@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: AzureSTT::Session
+  
+    &mdash; Documentation by YARD 0.9.26
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "AzureSTT::Session";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../AzureSTT.html" title="AzureSTT (module)">AzureSTT</a></span></span>
+     &raquo; 
+    <span class="title">Session</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: AzureSTT::Session
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">AzureSTT::Session</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/azure_stt/session.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A session is the class the end user uses to retrieve the Transcription. It contains a client.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client-instance_method" title="#client (instance method)">#<strong>client</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute client.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_transcription-instance_method" title="#create_transcription (instance method)">#<strong>create_transcription</strong>(content_urls:, properties:, locale:, display_name:)  &#x21d2; Models::Transcription </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a transcription by calling the API.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_transcription-instance_method" title="#get_transcription (instance method)">#<strong>get_transcription</strong>(id)  &#x21d2; Models::Transcription </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get a transcription identified by an id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_transcriptions-instance_method" title="#get_transcriptions (instance method)">#<strong>get_transcriptions</strong>(skip: nil, top: nil)  &#x21d2; Array[Models::Transcription] </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get multiple transcriptions.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(region: AzureSTT.configuration.region, subscription_key: AzureSTT.configuration.subscription_key)  &#x21d2; Session </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a session.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(region: AzureSTT.configuration.region, subscription_key: AzureSTT.configuration.subscription_key)  &#x21d2; <tt><span class='object_link'><a href="" title="AzureSTT::Session (class)">Session</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a session. If you don&#39;t provide any subscription_key or region, the value is read from configuration.</p>
+
+<p>configuration read from configuration</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>region</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>AzureSTT.configuration.region</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The region, optional, default is read from</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>subscription_key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>AzureSTT.configuration.subscription_key</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The subscription, optional, default is</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>region:</span> <span class='const'><span class='object_link'><a href="../AzureSTT.html" title="AzureSTT (module)">AzureSTT</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configuration'><span class='object_link'><a href="../AzureSTT.html#configuration-class_method" title="AzureSTT.configuration (method)">configuration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_region'><span class='object_link'><a href="Configuration.html#region-instance_method" title="AzureSTT::Configuration#region (method)">region</a></span></span><span class='comma'>,</span>
+               <span class='label'>subscription_key:</span> <span class='const'><span class='object_link'><a href="../AzureSTT.html" title="AzureSTT (module)">AzureSTT</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configuration'><span class='object_link'><a href="../AzureSTT.html#configuration-class_method" title="AzureSTT.configuration (method)">configuration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_subscription_key'><span class='object_link'><a href="Configuration.html#subscription_key-instance_method" title="AzureSTT::Configuration#subscription_key (method)">subscription_key</a></span></span><span class='rparen'>)</span>
+  <span class='ivar'>@client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Client.html" title="AzureSTT::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Client.html#initialize-instance_method" title="AzureSTT::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>region:</span> <span class='id identifier rubyid_region'>region</span><span class='comma'>,</span> <span class='label'>subscription_key:</span> <span class='id identifier rubyid_subscription_key'>subscription_key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="client-instance_method">
+  
+    #<strong>client</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute client.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client'>client</span>
+  <span class='ivar'>@client</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create_transcription-instance_method">
+  
+    #<strong>create_transcription</strong>(content_urls:, properties:, locale:, display_name:)  &#x21d2; <tt><span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a transcription by calling the API.</p>
+
+<p>transcription left empty)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>content_urls</span>
+      
+      
+        <span class='type'>(<tt>Array[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The urls of your files</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>properties</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The properties you want to use for the</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>locale</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The locale of the contained data</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>display_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the transcription (can be</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The transcription</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_transcription'>create_transcription</span><span class='lparen'>(</span><span class='label'>content_urls:</span><span class='comma'>,</span> <span class='label'>properties:</span><span class='comma'>,</span> <span class='label'>locale:</span><span class='comma'>,</span> <span class='label'>display_name:</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_transcription_hash'>transcription_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_transcription'>create_transcription</span><span class='lparen'>(</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>contentUrls:</span> <span class='id identifier rubyid_content_urls'>content_urls</span><span class='comma'>,</span>
+      <span class='label'>properties:</span> <span class='id identifier rubyid_properties'>properties</span><span class='comma'>,</span>
+      <span class='label'>locale:</span> <span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span>
+      <span class='label'>displayName:</span> <span class='id identifier rubyid_display_name'>display_name</span>
+    <span class='rbrace'>}</span>
+  <span class='rparen'>)</span>
+  <span class='id identifier rubyid_build_transcription_from_hash'>build_transcription_from_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_transcription_hash'>transcription_hash</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_transcription-instance_method">
+  
+    #<strong>get_transcription</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get a transcription identified by an id.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The identifier of the transcription</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the transcription</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_transcription'>get_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_transcription_hash'>transcription_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_transcription'>get_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_build_transcription_from_hash'>build_transcription_from_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_transcription_hash'>transcription_hash</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_transcriptions-instance_method">
+  
+    #<strong>get_transcriptions</strong>(skip: nil, top: nil)  &#x21d2; <tt>Array[<span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span>]</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get multiple transcriptions.</p>
+
+<p>(optional)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>skip</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of transcriptions that will be skipped (optional)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>top</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of transcriptions that will be included after skipping</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array[<span class='object_link'><a href="Models/Transcription.html" title="AzureSTT::Models::Transcription (class)">Models::Transcription</a></span>]</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_transcriptions'>get_transcriptions</span><span class='lparen'>(</span><span class='label'>skip:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>top:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_transcriptions_array'>transcriptions_array</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_transcriptions'>get_transcriptions</span><span class='lparen'>(</span><span class='label'>skip:</span> <span class='id identifier rubyid_skip'>skip</span><span class='comma'>,</span> <span class='label'>top:</span> <span class='id identifier rubyid_top'>top</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_transcriptions_array'>transcriptions_array</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_transcription_hash'>transcription_hash</span><span class='op'>|</span>
+    <span class='id identifier rubyid_build_transcription_from_hash'>build_transcription_from_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_transcription_hash'>transcription_hash</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Jun 24 14:16:27 2021 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.26 (ruby-2.6.6).
+</div>
+
+    </div>
+  </body>
+</html>
