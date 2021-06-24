@@ -6,6 +6,7 @@
 module AzureSTT
 end
 
+require_relative 'azure_stt/version'
 require_relative 'azure_stt/configuration'
 require_relative 'azure_stt/errors'
 require_relative 'azure_stt/client'
