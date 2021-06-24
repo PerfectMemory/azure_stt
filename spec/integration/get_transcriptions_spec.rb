@@ -3,35 +3,22 @@
 require 'spec_helper'
 
 # rubocop:disable RSpec/DescribeClass
-describe 'Create a transcription', integration: true do
-  let(:arguments) do
-    {
-      content_urls: ['whatever.com/sample.ogg'],
-      properties: {
-        'diarizationEnabled' => false,
-        'wordLevelTimestampsEnabled' => false,
-        'punctuationMode' => 'DictatedAndAutomatic',
-        'profanityFilterMode' => 'Masked'
-      },
-      locale: 'en-US',
-      display_name: 'whatever'
-    }
-  end
-
+describe 'Get a transcription', integration: true do
   before do
     AzureSTT.configure do |config|
       config.region = 'region'
       config.subscription_key = 'ljdhfkjfh'
     end
-    stub_request(:post,
+    AzureSTT.instance_variable_set(:@client, nil)
+    stub_request(:get,
                  'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
       .to_return(response)
   end
 
   context 'when there is no error' do
     describe 'transcription' do
-      subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+      subject(:transcriptions) do
+        AzureSTT::Session.new.get_transcriptions
       end
 
       let(:response) do
@@ -40,30 +27,45 @@ describe 'Create a transcription', integration: true do
           {
             'Content-Type' => 'application/json'
           },
-          status: 201,
-          body: read_fixture('transcription.json')
+          status: 200,
+          body: read_fixture('transcriptions.json')
         }
       end
 
-      it 'can create a transcription' do
-        expect(transcription)
-          .to be_an_instance_of(AzureSTT::Models::Transcription)
+      it 'can create an array of transcripitons' do
+        expect(transcriptions)
+          .to all(be_an_instance_of(AzureSTT::Models::Transcription))
+      end
+    end
+  end
+
+  context 'when there are no transcription' do
+    describe 'transcription' do
+      subject(:transcriptions) do
+        AzureSTT::Session.new.get_transcriptions
       end
 
-      it 'has the correct id' do
-        expect(transcription.id).to eq '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
+      let(:response) do
+        {
+          headers:
+          {
+            'Content-Type' => 'application/json'
+          },
+          status: 200,
+          body: read_fixture('transcriptions_empty.json')
+        }
       end
 
-      it 'has the correct status' do
-        expect(transcription.succeeded?).to be true
+      it 'creates an empty array' do
+        expect(transcriptions.size).to be 0
       end
     end
   end
 
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
-      subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+      subject(:transcriptions) do
+        AzureSTT::Session.new.get_transcriptions
       end
 
       let(:response) do
@@ -73,7 +75,7 @@ describe 'Create a transcription', integration: true do
       end
 
       it 'raises a NetError' do
-        expect { transcription }
+        expect { transcriptions }
           .to raise_error AzureSTT::NetError
       end
     end
@@ -81,8 +83,8 @@ describe 'Create a transcription', integration: true do
 
   context 'when there is a 400 error' do
     describe 'transcription' do
-      subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+      subject(:transcriptions) do
+        AzureSTT::Session.new.get_transcriptions
       end
 
       let(:response) do
@@ -97,7 +99,7 @@ describe 'Create a transcription', integration: true do
       end
 
       it 'raises a ServiceError' do
-        expect { transcription }
+        expect { transcriptions }
           .to raise_error AzureSTT::ServiceError
       end
     end

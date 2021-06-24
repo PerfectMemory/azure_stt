@@ -26,6 +26,7 @@ FactoryBot.define do
     status { 'Succeeded' }
     locale { 'en-US' }
     display_name { '' }
+    client { AzureSTT::Client.new(subscription_key: 'dffkh', region: 'uscentral') }
 
     initialize_with { new(attributes) }
   end

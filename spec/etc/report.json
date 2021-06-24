@@ -1,0 +1,18 @@
+{
+  "successfulTranscriptionsCount": 0,
+  "failedTranscriptionsCount": 2,
+  "details": [
+    {
+      "source": "https://contoso.com/mystoragelocation",
+      "status": "Failed",
+      "errorMessage": "Reason DownloadRecordingsUrisAuthenticationError, Details: Authentication exception when downloading the recording URI from the remote site. (JobId 45a8bf70-ec94-4a2a-91b4-71fe4e763b10).",
+      "errorKind": "DownloadRecordingsUrisAuthenticationError"
+    },
+    {
+      "source": "https://contoso.com/myotherstoragelocation",
+      "status": "Failed",
+      "errorMessage": "Reason DownloadRecordingsUrisAuthenticationError, Details: Authentication exception when downloading the recording URI from the remote site. (JobId e177b95a-797c-40e2-8ac8-e3211fdd7c70).",
+      "errorKind": "DownloadRecordingsUrisAuthenticationError"
+    }
+  ]
+}

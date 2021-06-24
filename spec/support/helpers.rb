@@ -9,8 +9,7 @@ module Helpers
     File.read(fixture_path(*path))
   end
 
-  def load_json(*path, symbolize_names: true)
-    JSON.parse(File.read(fixture_path(*path)),
-               symbolize_names: symbolize_names)
+  def load_json(*path)
+    JSON.parse(File.read(fixture_path(*path)))
   end
 end

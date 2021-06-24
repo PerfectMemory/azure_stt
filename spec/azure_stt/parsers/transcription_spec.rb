@@ -8,7 +8,7 @@ describe AzureSTT::Parsers::Transcription do
   end
 
   let(:transcription_hash) do
-    load_json('create_transcription.json')
+    load_json('transcription.json')
   end
 
   describe '#attributes' do
@@ -16,12 +16,18 @@ describe AzureSTT::Parsers::Transcription do
       parser.attributes
     end
 
+    let(:client_hash) do
+      {
+        client: AzureSTT::Client.new(region: 'region', subscription_key: 'f')
+      }
+    end
+
     it 'returns a Hash' do
       expect(attributes).to be_an_instance_of Hash
     end
 
     it 'can create a AzureSTT::Models::Transcription' do
-      expect { AzureSTT::Models::Transcription.new(attributes) }
+      expect { AzureSTT::Models::Transcription.new(attributes.merge(client_hash)) }
         .not_to raise_error
     end
   end

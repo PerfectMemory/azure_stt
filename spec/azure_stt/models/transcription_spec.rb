@@ -15,7 +15,6 @@ describe AzureSTT::Models::Transcription do
     its(:running?)      { is_expected.to be true  }
     its(:finished?)     { is_expected.to be false }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be false }
   end
 
@@ -27,7 +26,6 @@ describe AzureSTT::Models::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be true  }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be true  }
   end
 
@@ -39,7 +37,6 @@ describe AzureSTT::Models::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be false }
     its(:failed?)       { is_expected.to be false }
-    its(:not_started?)  { is_expected.to be true  }
     its(:succeeded?)    { is_expected.to be false }
   end
 
@@ -51,52 +48,82 @@ describe AzureSTT::Models::Transcription do
     its(:running?)      { is_expected.to be false }
     its(:finished?)     { is_expected.to be true  }
     its(:failed?)       { is_expected.to be true  }
-    its(:not_started?)  { is_expected.to be false }
     its(:succeeded?)    { is_expected.to be false }
   end
 
-  describe '#create' do
-    subject(:create) do
-      described_class.create(params)
+  describe '#report' do
+    subject(:report) do
+      transcription.report
     end
 
-    let(:params) do
-      {
-        content_urls: ['whatever.ogg'],
-        properties: {},
-        locale: 'en-US',
-        display_name: ''
-      }
+    let(:files_array) do
+      load_json('files.json')['values']
     end
 
-    let(:params_client) do
-      {
-        contentUrls: params[:content_urls],
-        properties: params[:properties],
-        locale: params[:locale],
-        displayName: params[:display_name]
-      }
-    end
-
-    let(:transcription_hash) do
-      load_json('create_transcription.json')
+    let(:report_hash) do
+      load_json('report.json')
     end
 
     before do
-      allow(AzureSTT.client)
-        .to receive(:create_transcription)
-        .with(params_client)
-        .and_return(transcription_hash)
+      allow(transcription.client)
+        .to receive(:get_transcription_files)
+        .with(transcription.id)
+        .and_return(files_array)
+      allow(transcription.client)
+        .to receive(:get_file)
+        .with('https://path.json')
+        .and_return(report_hash)
     end
 
     it 'calls the client' do
-      create
-      expect(AzureSTT.client)
-        .to have_received(:create_transcription)
+      report
+      expect(transcription.client)
+        .to have_received(:get_transcription_files)
     end
 
-    it 'can create a transcription using the parser' do
-      expect(create).to be_an_instance_of described_class
+    it 'returns a AzureSTT::Models::Client' do
+      expect(report).to be_an_instance_of(AzureSTT::Models::Report)
+    end
+  end
+
+  describe '#results' do
+    subject(:results) do
+      transcription.results
+    end
+
+    let(:files_array) do
+      load_json('files.json')['values']
+    end
+
+    let(:result_hash) do
+      load_json('result.json')
+    end
+
+    before do
+      allow(transcription.client)
+        .to receive(:get_transcription_files)
+        .with(transcription.id)
+        .and_return(files_array)
+      allow(transcription.client)
+        .to receive(:get_file)
+        .with('https://path1.json')
+        .and_return(result_hash)
+    end
+
+    it 'calls the client to have the files' do
+      results
+      expect(transcription.client)
+        .to have_received(:get_transcription_files)
+    end
+
+    it 'calls the client to get the results' do
+      results
+      expect(transcription.client)
+        .to have_received(:get_file)
+    end
+
+    it 'returns a AzureSTT::Models::Client' do
+      expect(results).to all(be_an_instance_of(AzureSTT::Models::Result))
     end
   end
 end

@@ -10,7 +10,7 @@ module AzureSTT
   end
 
   #
-  # Get the configuration for Azure Batch Transcription
+  # Get the configuration for AzureSTT
   #
   # @return [Configuration]
   #
@@ -23,5 +23,6 @@ module AzureSTT
   #
   def self.configure
     yield configuration
+    @client = nil
   end
 end

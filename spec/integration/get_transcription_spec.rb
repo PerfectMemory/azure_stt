@@ -3,35 +3,25 @@
 require 'spec_helper'
 
 # rubocop:disable RSpec/DescribeClass
-describe 'Create a transcription', integration: true do
-  let(:arguments) do
-    {
-      content_urls: ['whatever.com/sample.ogg'],
-      properties: {
-        'diarizationEnabled' => false,
-        'wordLevelTimestampsEnabled' => false,
-        'punctuationMode' => 'DictatedAndAutomatic',
-        'profanityFilterMode' => 'Masked'
-      },
-      locale: 'en-US',
-      display_name: 'whatever'
-    }
-  end
-
+describe 'Get a transcription', integration: true do
   before do
     AzureSTT.configure do |config|
       config.region = 'region'
       config.subscription_key = 'ljdhfkjfh'
     end
-    stub_request(:post,
-                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+    stub_request(:get,
+                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
       .to_return(response)
+  end
+
+  let(:id) do
+    '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
   end
 
   context 'when there is no error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.get_transcription(id)
       end
 
       let(:response) do
@@ -40,7 +30,7 @@ describe 'Create a transcription', integration: true do
           {
             'Content-Type' => 'application/json'
           },
-          status: 201,
+          status: 200,
           body: read_fixture('transcription.json')
         }
       end
@@ -63,7 +53,7 @@ describe 'Create a transcription', integration: true do
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.get_transcription(id)
       end
 
       let(:response) do
@@ -82,7 +72,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is a 400 error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.get_transcription(id)
       end
 
       let(:response) do

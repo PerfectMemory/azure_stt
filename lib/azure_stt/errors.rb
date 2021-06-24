@@ -5,12 +5,10 @@ module AzureSTT
   # Top level error for AzureSTT specific errors
   #
   class Error < StandardError
-    attr_reader :code, :message, :errors
+    attr_reader :code
 
     def initialize(code:, message:)
-      super
       @code = code
-      @message = message
       super("#{message} (#{code})")
     end
   end

@@ -41,8 +41,80 @@ module AzureSTT
       results.parsed_response
     end
 
+    #
+    # Get a transcription by giving it's id
+    #
+    # @param [String] id The identifier of the transcription
+    #
+    # @return [Hash] The JSON body response, parsed by HTTParty
+    #
+    def get_transcription(id)
+      results = get("/transcriptions/#{id}")
+
+      results.parsed_response
+    end
+
+    #
+    # Get an Array of all the transcriptions
+    #
+    # @param [Integer] skip Number of transcriptions that will be skipped (optional)
+    # @param [Integer] top Number of transcriptions that will be included (optional)
+    #
+    # @return [Array[Hash]] Array of all the transcriptions. The transcriptions
+    # are Hashes parsed by HTTParty.
+    #
+    def get_transcriptions(skip: nil, top: nil)
+      results = get(
+        '/transcriptions',
+        {
+          skip: skip,
+          top: top
+        }.compact
+      )
+
+      results.parsed_response['values']
+    end
+
+    #
+    # Get an array containing the files for a given transcription
+    #
+    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles
+    #
+    # @param [Integer] id The identifier of the transcription
+    #
+    # @return [Array[Hash]] Array of the files of a transcription
+    #
+    def get_transcription_files(id)
+      results = get("/transcriptions/#{id}/files")
+
+      results.parsed_response['values']
+    end
+
+    #
+    # Read a JSON file and parse it.
+    #
+    # @param [String] file_url The url of the content
+    #
+    # @return [Hash] the file parsed
+    #
+    def get_file(file_url)
+      response = self.class.get(file_url)
+
+      results = handle_response(response)
+
+      results.parsed_response
+    end
+
     private
 
+    #
+    # Make a post request by giving a path and a body
+    #
+    # @param [String] path the path, which is added to the base_uri
+    # @param [String] body the body of the request
+    #
+    # @return [HTTParty::Response]
+    #
     def post(path, body)
       options = {
         headers: headers,
@@ -50,6 +122,23 @@ module AzureSTT
       }
 
       response = self.class.post(path, options)
+      handle_response(response)
+    end
+
+    #
+    # Make a get request to the API.
+    #
+    # @param [String] path the path, which is added to the base_uri
+    # @param [Hash] parameters The parameters you want to add to the headers (empty by default)
+    #
+    # @return [HTTParty::Response]
+    #
+    def get(path, parameters = {})
+      options = {
+        headers: headers.merge(parameters)
+      }.compact
+
+      response = self.class.get(path, options)
       handle_response(response)
     end
 

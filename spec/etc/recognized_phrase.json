@@ -1,0 +1,116 @@
+{
+  "recognitionStatus": "Success",
+  "channel": 0,
+  "speaker": 1,
+  "offset": "PT8.4S",
+  "duration": "PT3.47S",
+  "offsetInTicks": 84000000.0,
+  "durationInTicks": 34700000.0,
+  "nBest": [
+    {
+      "confidence": 0.85595566,
+      "lexical": "hello this is six minutes english from bbc learning english i'm neil",
+      "itn": "hello this is 6 minutes english from bbc learning english i'm neil",
+      "maskedITN": "hello this is 6 minutes english from bbc learning english i'm neil",
+      "display": "hello, this is 6 minutes English from BBC Learning English. I'm Neil.",
+      "words": [
+        {
+          "word": "hello",
+          "offset": "PT8.4S",
+          "duration": "PT0.35S",
+          "offsetInTicks": 84000000.0,
+          "durationInTicks": 3500000.0,
+          "confidence": 0.9438632
+        },
+        {
+          "word": "this",
+          "offset": "PT8.76S",
+          "duration": "PT0.17S",
+          "offsetInTicks": 87600000.0,
+          "durationInTicks": 1700000.0,
+          "confidence": 0.87733537
+        },
+        {
+          "word": "is",
+          "offset": "PT8.94S",
+          "duration": "PT0.12S",
+          "offsetInTicks": 89400000.0,
+          "durationInTicks": 1200000.0,
+          "confidence": 0.95324165
+        },
+        {
+          "word": "six",
+          "offset": "PT9.07S",
+          "duration": "PT0.26S",
+          "offsetInTicks": 90700000.0,
+          "durationInTicks": 2600000.0,
+          "confidence": 0.8876173
+        },
+        {
+          "word": "minutes",
+          "offset": "PT9.34S",
+          "duration": "PT0.27S",
+          "offsetInTicks": 93400000.0,
+          "durationInTicks": 2700000.0,
+          "confidence": 0.8660928
+        },
+        {
+          "word": "english",
+          "offset": "PT9.62S",
+          "duration": "PT0.34S",
+          "offsetInTicks": 96200000.0,
+          "durationInTicks": 3400000.0,
+          "confidence": 0.9256963
+        },
+        {
+          "word": "from",
+          "offset": "PT9.97S",
+          "duration": "PT0.14S",
+          "offsetInTicks": 99700000.0,
+          "durationInTicks": 1400000.0,
+          "confidence": 0.5599495
+        },
+        {
+          "word": "bbc",
+          "offset": "PT10.12S",
+          "duration": "PT0.49S",
+          "offsetInTicks": 101200000.0,
+          "durationInTicks": 4900000.0,
+          "confidence": 0.8060299
+        },
+        {
+          "word": "learning",
+          "offset": "PT10.62S",
+          "duration": "PT0.29S",
+          "offsetInTicks": 106200000.0,
+          "durationInTicks": 2900000.0,
+          "confidence": 0.9245612
+        },
+        {
+          "word": "english",
+          "offset": "PT10.92S",
+          "duration": "PT0.39S",
+          "offsetInTicks": 109200000.0,
+          "durationInTicks": 3900000.0,
+          "confidence": 0.9340471
+        },
+        {
+          "word": "i'm",
+          "offset": "PT11.32S",
+          "duration": "PT0.15S",
+          "offsetInTicks": 113200000.0,
+          "durationInTicks": 1500000.0,
+          "confidence": 0.7586445
+        },
+        {
+          "word": "neil",
+          "offset": "PT11.48S",
+          "duration": "PT0.39S",
+          "offsetInTicks": 114800000.0,
+          "durationInTicks": 3900000.0,
+          "confidence": 0.7219622
+        }
+      ]
+    }
+  ]
+}

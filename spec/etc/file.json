@@ -1,0 +1,12 @@
+{
+  "self": "https://westus.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/9c142230-a9e4-4dbb-8cc7-70ca43d5cc91/files/f23e54f5-ed74-4c31-9730-2f1a3ef83ce8",
+  "name": "Name",
+  "kind": "Transcription",
+  "properties": {
+    "size": 200
+  },
+  "createdDateTime": "2020-01-13T08:00:00Z",
+  "links": {
+    "contentUrl": "https://customspeech-usw.blob.core.windows.net/artifacts/mywavefile1.wav.json?st=2018-02-09T18%3A07%3A00Z&se=2018-02-10T18%3A07%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=e05d8d56-9675-448b-820c-4318ae64c8d5"
+  }
+}

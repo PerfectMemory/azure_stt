@@ -21,6 +21,17 @@ describe AzureSTT::Client do
     }
   end
 
+  let(:response) do
+    {
+      status: 201,
+      headers:
+      {
+        'Content-Type' => 'application/json'
+      },
+      body: json_response
+    }
+  end
+
   describe '#create_transcription' do
     subject(:create_transcription) do
       client.create_transcription
@@ -32,54 +43,112 @@ describe AzureSTT::Client do
         .to_return(response)
     end
 
-    let(:response) do
-      {
-        status: 201,
-        headers:
-        {
-          'Content-Type' => 'application/json'
-        },
-        body: json_response
-      }
+    let(:json_response) do
+      read_fixture('transcription.json')
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(create_transcription).to eq(JSON.parse(json_response))
+    end
+  end
+
+  describe '#get_transcription' do
+    subject(:get_transcription) do
+      client.get_transcription(id)
+    end
+
+    let(:id) do
+      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
     end
 
     let(:json_response) do
-      read_fixture('create_transcription.json')
+      read_fixture('transcription.json')
     end
 
-    it 'returns the correct JSON' do
-      expect(create_transcription).to eq(JSON.parse(json_response))
+    before do
+      stub_request(:get,
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+        .to_return(response)
     end
 
-    context 'when there is a network error' do
-      let(:response) do
-        {
-          status: 500
-        }
-      end
+    it_behaves_like 'HTTP_errors_handler'
 
-      it 'raises a NetError' do
-        expect { create_transcription }
-          .to raise_error AzureSTT::NetError
-      end
+    it 'returns the correct parsed JSON' do
+      expect(get_transcription).to eq(JSON.parse(json_response))
+    end
+  end
+
+  describe '#get_transcriptions' do
+    subject(:get_transcriptions) do
+      client.get_transcriptions
     end
 
-    context 'when there is an error on the API side' do
-      let(:response) do
-        {
-          status: 400,
-          headers:
-          {
-            'Content-Type' => 'application/json'
-          },
-          body: json_response
-        }
-      end
+    let(:json_response) do
+      read_fixture('transcriptions.json')
+    end
 
-      it 'raises a ServiceError' do
-        expect { create_transcription }
-          .to raise_error AzureSTT::ServiceError
-      end
+    before do
+      stub_request(:get,
+                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+        .to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(get_transcriptions).to eq(JSON.parse(json_response)['values'])
+    end
+  end
+
+  describe '#get_transcriptions_files' do
+    subject(:get_transcription_files) do
+      client.get_transcription_files(id)
+    end
+
+    let(:id) do
+      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
+    end
+
+    let(:json_response) do
+      read_fixture('files.json')
+    end
+
+    before do
+      stub_request(:get,
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}/files")
+        .to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(get_transcription_files).to eq(JSON.parse(json_response)['values'])
+    end
+  end
+
+  describe '#get_file' do
+    subject(:get_file) do
+      client.get_file(url)
+    end
+
+    let(:url) do
+      'https://path.json'
+    end
+
+    let(:json_response) do
+      read_fixture('report.json')
+    end
+
+    before do
+      stub_request(:get, url).to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns the correct parsed JSON' do
+      expect(get_file).to eq(JSON.parse(json_response))
     end
   end
 end

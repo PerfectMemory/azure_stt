@@ -1,0 +1,45 @@
+{
+  "recognitionStatus": "Success",
+  "channel": 0,
+  "offset": "PT18.18S",
+  "duration": "PT8.36S",
+  "offsetInTicks": 181800000.0,
+  "durationInTicks": 83600000.0,
+  "nBest": [
+    {
+      "confidence": 0.8538473,
+      "lexical": "vivons alors côté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "itn": "vivons alors côté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le 31 mars dernier la période qui est devant nous",
+      "maskedITN": "vivons alors côté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le 31 mars dernier la période qui est devant nous",
+      "display": "Vivons alors côté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire. Le 31 mars dernier, la période qui est devant nous."
+    },
+    {
+      "confidence": 0.8505009,
+      "lexical": "vivons alors côté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "itn": "vivons alors côté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "maskedITN": "vivons alors côté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "display": "vivons alors côté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous"
+    },
+    {
+      "confidence": 0.8474979,
+      "lexical": "vivons alors coter avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "itn": "vivons alors coter avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "maskedITN": "vivons alors coter avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "display": "vivons alors coter avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous"
+    },
+    {
+      "confidence": 0.85122156,
+      "lexical": "vivons alors coté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "itn": "vivons alors coté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "maskedITN": "vivons alors coté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "display": "vivons alors coté avec avec leur deuil et nous faut maintenant regarder comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous"
+    },
+    {
+      "confidence": 0.8478751,
+      "lexical": "vivons alors coté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "itn": "vivons alors coté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "maskedITN": "vivons alors coté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous",
+      "display": "vivons alors coté avec avec leur deuil et nous faut maintenant regardez comme je m'étais engagé à le faire le trente et un mars dernier la période qui est devant nous"
+    }
+  ]
+}

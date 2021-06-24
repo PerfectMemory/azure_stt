@@ -14,7 +14,7 @@ module AzureSTT
       # @param [Hash] hash The hash containing the information from the API
       #
       def initialize(hash)
-        @hash = hash.transform_keys(&:to_sym)
+        @hash = hash
       end
 
       #
