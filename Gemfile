@@ -18,6 +18,7 @@ group :test do
   gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
   gem 'simplecov', require: false
+  gem 'simplecov-lcov', require: false
   gem 'webmock'
   gem 'yard'
 end

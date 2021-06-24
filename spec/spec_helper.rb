@@ -7,6 +7,7 @@ require 'factory_bot'
 require 'faker'
 require 'rspec/its'
 require 'simplecov'
+require 'simplecov-lcov'
 require 'webmock/rspec'
 
 Dotenv.load
@@ -17,6 +18,15 @@ SimpleCov.start do
   add_filter 'spec/support'
   add_group 'Library', 'lib'
   add_group 'Specs', 'spec'
+end
+
+if ENV['CI']
+  SimpleCov::Formatter::LcovFormatter.config do |config|
+    config.report_with_simgle_file = true
+    config.lcov_file_name = "lcov.info"
+  end
+else
+  SimpleCov::Formatter::HTMLFormatter
 end
 
 require 'azure_stt'
