@@ -12,21 +12,23 @@ require 'webmock/rspec'
 
 Dotenv.load
 
+SimpleCov::Formatter::LcovFormatter.config do |c|
+  c.report_with_single_file = true
+  c.single_report_path = 'coverage/lcov.info'
+end
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::LcovFormatter
+  ]
+)
+
 SimpleCov.start do
   add_filter ENV['GEM_HOME'] if ENV.fetch('GEM_HOME', '').include?('bundle')
   add_filter '.bundle'
   add_filter 'spec/support'
   add_group 'Library', 'lib'
   add_group 'Specs', 'spec'
-end
-
-if ENV['CI']
-  SimpleCov::Formatter::LcovFormatter.config do |config|
-    config.report_with_simgle_file = true
-    config.lcov_file_name = "lcov.info"
-  end
-else
-  SimpleCov::Formatter::HTMLFormatter
 end
 
 require 'azure_stt'
