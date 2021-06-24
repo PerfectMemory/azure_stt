@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Unreleased]
 
+---
+
+## [Released]
+
+## [0.1.1] - 2021-06-24
+
+### Fixed
+
+* dry-struct dependency in the gemspec
+
 ## [0.1.0] - 2021-06-24
 
 ### Added
@@ -12,10 +22,6 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 * Start a transcription
 
 * Retrieve a transcription and its results
-
----
-
-## [Released]
 
 ---
 
