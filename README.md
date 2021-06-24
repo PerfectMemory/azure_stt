@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/PerfectMemory/azure_stt/actions/workflows/ci.yml/badge.svg)](https://github.com/PerfectMemory/azure_stt/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/PerfectMemory/azure_stt/badge.svg)](https://coveralls.io/github/PerfectMemory/azure_stt)
+[![Maintainability](https://api.codeclimate.com/v1/badges/375190d3122da56a9fe1/maintainability)](https://codeclimate.com/github/PerfectMemory/azure_stt/maintainability)
 
 API Wrapper for the [Microsoft Azure Speech Services Speech-to-text REST API 3.0](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-speech-to-text) (Cognitive Services).
 
