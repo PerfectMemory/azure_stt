@@ -1,5 +1,6 @@
 # azure_stt
 
+[![Gem Version](https://badge.fury.io/rb/azure_stt.svg)](https://badge.fury.io/rb/azure_stt)
 [![CI](https://github.com/PerfectMemory/azure_stt/actions/workflows/ci.yml/badge.svg)](https://github.com/PerfectMemory/azure_stt/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/PerfectMemory/azure_stt/badge.svg)](https://coveralls.io/github/PerfectMemory/azure_stt)
 [![Maintainability](https://api.codeclimate.com/v1/badges/375190d3122da56a9fe1/maintainability)](https://codeclimate.com/github/PerfectMemory/azure_stt/maintainability)
@@ -118,8 +119,6 @@ end
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
