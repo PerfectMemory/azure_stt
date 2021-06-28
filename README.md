@@ -33,7 +33,7 @@ To be able to use the gem, you must have a subscription key.
 You can generate one on your Azure account.
 
 * If you don't have an Azure account, you can create one for free on [this page](https://azure.microsoft.com/en-us/free/).
-* Once logged on your [Azure portal](https://portal.azure.com/), subscribe to SpeechServices in Microsoft Cognitive Service.
+* Once logged on your [Azure portal](https://portal.azure.com/), subscribe to Speech in Microsoft Cognitive Services.
 * You will find two subscription keys available in 'RESOURCE MANAGEMENT > Keys' ('KEY 1' and 'KEY 2').
 
 ## Usage
