@@ -166,12 +166,12 @@ describe AzureSTT::Client do
       }
     end
     let(:json_response) do
-      %(
+      <<-UNAUTHORIZED_JSON
         {
           "code": "Unauthorized",
           "message": "Authentication is required to access the resource."
         }
-      )
+      UNAUTHORIZED_JSON
     end
 
     before do
