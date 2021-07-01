@@ -125,4 +125,32 @@ describe AzureSTT::Session do
         .to all(be_an_instance_of(AzureSTT::Models::Transcription))
     end
   end
+
+  describe '#delete_transcription' do
+    let(:delete_transcription) do
+      session.delete_transcription(id)
+    end
+
+    let(:id) do
+      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
+    end
+
+    before do
+      allow(client)
+        .to receive(:delete_transcription)
+        .with(id)
+        .and_return(true)
+    end
+
+    it 'calls the client' do
+      delete_transcription
+      expect(client)
+        .to have_received(:delete_transcription)
+        .with(id)
+    end
+
+    it 'returns true' do
+      expect(delete_transcription).to be_truthy
+    end
+  end
 end

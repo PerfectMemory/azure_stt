@@ -160,11 +160,13 @@ describe AzureSTT::Client do
     let(:id) do
       '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
     end
+
     let(:response) do
       {
         status: 204
       }
     end
+
     let(:json_response) do
       <<-UNAUTHORIZED_JSON
         {
