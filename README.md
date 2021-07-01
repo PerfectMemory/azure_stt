@@ -125,6 +125,9 @@ session = AzureSTT::Session.new
 transcription = session.delete_transcription('your_transcription_id')
 ```
 
+The API doesn't seem to send 404 errors when the id is unknown, but always send a 204 response.
+So the `Session#delete_transcription` returns `true` even when the transcription didn't exist.
+
 ### Starting a transcription, fetching the results and deleting the transcription
 
 ```ruby

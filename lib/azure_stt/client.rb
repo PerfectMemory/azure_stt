@@ -83,7 +83,7 @@ module AzureSTT
     # @return [Boolean] true if the transcription had been deleted, raises an error else
     #
     def delete_transcription(id)
-      response = self.class.delete("/transcriptions/#{id}")
+      response = self.class.delete("/transcriptions/#{id}", headers: headers)
       handle_response(response)
 
       true
