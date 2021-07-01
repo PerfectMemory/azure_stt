@@ -62,7 +62,7 @@ Finally, the class `AzureSTT::Session` uses by the default the values from the c
 session = AzureSTT::Session.new(region: 'your_region', subscription_key: 'your_key')
 ```
 
-### start a transcription
+### Start a transcription
 
 ```ruby
 require 'azure_stt'
@@ -114,6 +114,57 @@ if transcription.succeeded?
   result = transcription.results.first
   puts result.text
 end
+```
+
+### Delete a transcription
+
+```ruby
+require 'azure_stt'
+
+session = AzureSTT::Session.new
+
+transcription = session.delete_transcription('your_transcription_id')
+```
+
+The API doesn't seem to send 404 errors when the id is unknown, but always send a 204 response.
+So the `Session#delete_transcription` returns `true` even when the transcription didn't exist.
+
+### Starting a transcription, fetching the results and deleting the transcription
+
+```ruby
+require 'azure_stt'
+
+session = AzureSTT::Session.new
+
+properties = {
+  "diarizationEnabled" => false,
+  "wordLevelTimestampsEnabled" => false,
+  "punctuationMode" => "DictatedAndAutomatic",
+  "profanityFilterMode" => "Masked"
+}
+
+content_urls = [ 'https://path.com/audio.ogg' ]
+
+session = AzureSTT::Session.new
+
+transcription = session.create_transcription(
+  content_urls: content_urls,
+  properties: properties,
+  locale: 'en-US',
+  display_name: 'The name of the transcription')
+
+id = transcription.id
+
+while(!transcription.finished?) do
+  sleep(30)
+  transcription = session.get_transcription(id)
+end
+
+if(transcription.succeeded?)
+  puts transcription.results.first.text
+end
+
+session.delete_transcription(id)
 ```
 
 ## Development

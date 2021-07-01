@@ -76,6 +76,20 @@ module AzureSTT
     end
 
     #
+    # Delete a transcription with a given ID
+    #
+    # @param [String] id The id of the transcription in the API
+    #
+    # @return [Boolean] true if the transcription had been deleted, raises an error else
+    #
+    def delete_transcription(id)
+      response = self.class.delete("/transcriptions/#{id}", headers: headers)
+      handle_response(response)
+
+      true
+    end
+
+    #
     # Get an array containing the files for a given transcription
     #
     # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles

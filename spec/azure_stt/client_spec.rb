@@ -151,4 +151,41 @@ describe AzureSTT::Client do
       expect(get_file).to eq(JSON.parse(json_response))
     end
   end
+
+  describe '#delete_transcription' do
+    subject(:delete_transcription) do
+      client.delete_transcription(id)
+    end
+
+    let(:id) do
+      '9c142230-a9e4-4dbb-8cc7-70ca43d5cc91'
+    end
+
+    let(:response) do
+      {
+        status: 204
+      }
+    end
+
+    let(:json_response) do
+      <<-UNAUTHORIZED_JSON
+        {
+          "code": "Unauthorized",
+          "message": "Authentication is required to access the resource."
+        }
+      UNAUTHORIZED_JSON
+    end
+
+    before do
+      stub_request(:delete,
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+        .to_return(response)
+    end
+
+    it_behaves_like 'HTTP_errors_handler'
+
+    it 'returns true' do
+      expect(delete_transcription).to be_truthy
+    end
+  end
 end

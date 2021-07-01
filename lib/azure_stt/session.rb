@@ -80,6 +80,21 @@ module AzureSTT
       end
     end
 
+    #
+    # Delete an API transcription with a given ID. The transcription will not
+    # exist anymore in the API, therefore you won't be able to retrieve it.
+    #
+    # @see https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription
+    #
+    # @param [String] id The id of the transcription in the API
+    #
+    # @return [Boolean] true if the transcription had been deleted, raises
+    # an error else
+    #
+    def delete_transcription(id)
+      client.delete_transcription(id)
+    end
+
     private
 
     #
