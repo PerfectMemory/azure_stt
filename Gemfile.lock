@@ -40,7 +40,7 @@ GEM
       dry-logic (~> 1.0, >= 1.0.2)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
-    faker (2.18.0)
+    faker (2.19.0)
       i18n (>= 1.6, < 2)
     hashdiff (1.0.1)
     httparty (0.18.1)
