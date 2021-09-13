@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'dry-struct', '~> 1'
-gem 'httparty', '~> 0.17'
+gem 'httparty', '~> 0.19'
 
 group :test do
   gem 'bundler', '~> 1.17'
