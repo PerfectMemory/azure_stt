@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Unreleased]
 
+---
+
+## [0.3.0] - 2022-10-19
+
 ### Modified
 
 - Compatibility with Ruby 3.1
