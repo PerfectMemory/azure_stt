@@ -31,7 +31,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is no error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.create_transcription(**arguments)
       end
 
       let(:response) do
@@ -63,7 +63,7 @@ describe 'Create a transcription', integration: true do
   context 'when the api is unreachable (Error 500)' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.create_transcription(**arguments)
       end
 
       let(:response) do
@@ -82,7 +82,7 @@ describe 'Create a transcription', integration: true do
   context 'when there is a 400 error' do
     describe 'transcription' do
       subject(:transcription) do
-        AzureSTT::Session.new.create_transcription(arguments)
+        AzureSTT::Session.new.create_transcription(**arguments)
       end
 
       let(:response) do

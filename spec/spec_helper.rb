@@ -24,7 +24,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
 )
 
 SimpleCov.start do
-  add_filter ENV['GEM_HOME'] if ENV.fetch('GEM_HOME', '').include?('bundle')
+  add_filter ENV.fetch('GEM_HOME') if ENV.fetch('GEM_HOME', '').include?('bundle')
   add_filter '.bundle'
   add_filter 'spec/support'
   add_group 'Library', 'lib'
