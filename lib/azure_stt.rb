@@ -15,6 +15,6 @@ require_relative 'azure_stt/parsers'
 require_relative 'azure_stt/session'
 
 AzureSTT.configure do |config|
-  config.subscription_key = ENV['SUBSCRIPTION_KEY']
-  config.region = ENV['REGION']
+  config.subscription_key = ENV.fetch('SUBSCRIPTION_KEY', nil)
+  config.region = ENV.fetch('REGION', 'uscentral')
 end
