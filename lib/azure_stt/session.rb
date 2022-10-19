@@ -38,12 +38,10 @@ module AzureSTT
     #
     def create_transcription(content_urls:, properties:, locale:, display_name:)
       transcription_hash = client.create_transcription(
-        {
-          contentUrls: content_urls,
-          properties: properties,
-          locale: locale,
-          displayName: display_name
-        }
+        contentUrls: content_urls,
+        properties: properties,
+        locale: locale,
+        displayName: display_name
       )
       build_transcription_from_hash(transcription_hash)
     end

@@ -19,7 +19,7 @@ describe AzureSTT::Session do
 
   describe '#create_transcription' do
     subject(:create_transcription) do
-      session.create_transcription(params)
+      session.create_transcription(**params)
     end
 
     let(:params) do
