@@ -177,12 +177,13 @@ module AzureSTT
         if response.request.format == :json
           raise ServiceError.new(
             code: response.code,
-            message: response.response.message
+            message: response.message,
+            azure_message: response.dig('error', 'message')
           )
         else
           raise NetError.new(
             code: response.code,
-            message: response.response.message
+            message: response.message
           )
         end
       end
