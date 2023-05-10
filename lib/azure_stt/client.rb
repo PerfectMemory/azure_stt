@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'httparty'
-
 module AzureSTT
   #
   # Client class that uses HTTParty to communicate with the API
@@ -177,8 +176,8 @@ module AzureSTT
         if response.request.format == :json
           raise ServiceError.new(
             code: response.code,
-            message: response.message,
-            azure_message: response.dig('error', 'message')
+            message: response['code'] || response.message,
+            azure_message: response['message'] || response.dig('error', 'message')
           )
         else
           raise NetError.new(
