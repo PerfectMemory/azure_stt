@@ -5,9 +5,14 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Unreleased]
 
+### Fixed
+
+- `get_transcriptions` using `skip` and `top` params
+
 ### Modified
 
 - Messages given by Azure when 4** HTTP errors are detailed [#56](https://github.com/PerfectMemory/azure_stt/issues/56)
+- Use Speech to Text API v3.1 instead of v3.0 [#58](https://github.com/PerfectMemory/azure_stt/issues/58)
 
 ## [0.3.0] - 2022-10-19
 
