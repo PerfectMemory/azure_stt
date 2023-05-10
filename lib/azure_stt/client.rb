@@ -146,9 +146,10 @@ module AzureSTT
     #
     # @return [HTTParty::Response]
     #
-    def get(path, parameters = {})
+    def get(path, parameters = nil)
       options = {
-        headers: headers.merge(parameters)
+        headers: headers,
+        query: parameters
       }.compact
 
       response = self.class.get(path, options)
