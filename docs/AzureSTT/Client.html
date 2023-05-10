@@ -6,7 +6,7 @@
 <title>
   Class: AzureSTT::Client
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -220,6 +220,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#delete_transcription-instance_method" title="#delete_transcription (instance method)">#<strong>delete_transcription</strong>(id)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Delete a transcription with a given ID.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#get_file-instance_method" title="#get_file (instance method)">#<strong>get_file</strong>(file_url)  &#x21d2; Hash </a>
     
 
@@ -408,19 +432,19 @@
       <pre class="lines">
 
 
+19
 20
 21
 22
-23
-24</pre>
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>region:</span><span class='comma'>,</span> <span class='label'>subscription_key:</span><span class='rparen'>)</span>
   <span class='ivar'>@subscription_key</span> <span class='op'>=</span> <span class='id identifier rubyid_subscription_key'>subscription_key</span>
   <span class='ivar'>@region</span> <span class='op'>=</span> <span class='id identifier rubyid_region'>region</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_base_uri'>base_uri</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_region'>region</span><span class='embexpr_end'>}</span><span class='tstring_content'>.api.cognitive.microsoft.com/speechtotext/v3.0</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_base_uri'>base_uri</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_region'>region</span><span class='embexpr_end'>}</span><span class='tstring_content'>.api.cognitive.microsoft.com/speechtotext/v3.1</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -460,12 +484,12 @@
       <pre class="lines">
 
 
+11
 12
-13
-14</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_region'>region</span>
   <span class='ivar'>@region</span>
@@ -503,12 +527,12 @@
       <pre class="lines">
 
 
+11
 12
-13
-14</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subscription_key'>subscription_key</span>
   <span class='ivar'>@subscription_key</span>
@@ -581,7 +605,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription" target="_parent" title="https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription">https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription</a></li>
+      <li><a href="https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription" target="_parent" title="https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription">https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription</a></li>
     
   </ul>
 
@@ -591,17 +615,17 @@
       <pre class="lines">
 
 
+34
 35
 36
 37
 38
 39
 40
-41
-42</pre>
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_transcription'>create_transcription</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span>
@@ -610,6 +634,91 @@
   <span class='rparen'>)</span>
 
   <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_parsed_response'>parsed_response</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_transcription-instance_method">
+  
+    #<strong>delete_transcription</strong>(id)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Delete a transcription with a given ID</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the transcription in the API</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>true if the transcription had been deleted, raises an error else</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_transcription'>delete_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/transcriptions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>headers:</span> <span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_handle_response'>handle_response</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+
+  <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -680,16 +789,16 @@
       <pre class="lines">
 
 
-100
-101
-102
-103
-104
-105
-106</pre>
+113
+114
+115
+116
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_file'>get_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file_url'>file_url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_file_url'>file_url</span><span class='rparen'>)</span>
@@ -767,14 +876,14 @@
       <pre class="lines">
 
 
+50
 51
 52
 53
-54
-55</pre>
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_transcription'>get_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/transcriptions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -847,7 +956,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles" target="_parent" title="https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles">https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles</a></li>
+      <li><a href="https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles" target="_parent" title="https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles">https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles</a></li>
     
   </ul>
 
@@ -857,14 +966,14 @@
       <pre class="lines">
 
 
-87
-88
-89
-90
-91</pre>
+100
+101
+102
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_transcription_files'>get_transcription_files</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/transcriptions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/files</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -962,6 +1071,7 @@
       <pre class="lines">
 
 
+65
 66
 67
 68
@@ -971,11 +1081,10 @@
 72
 73
 74
-75
-76</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/client.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_transcriptions'>get_transcriptions</span><span class='lparen'>(</span><span class='label'>skip:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>top:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span>
@@ -998,9 +1107,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 24 14:16:27 2021 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-2.6.6).
+  Generated on Wed May 10 12:30:20 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.34 (ruby-2.7.7).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: AzureSTT::Session
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -178,6 +178,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Create a transcription by calling the API.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_transcription-instance_method" title="#delete_transcription (instance method)">#<strong>delete_transcription</strong>(id)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Delete an API transcription with a given ID.</p>
 </div></span>
   
 </li>
@@ -514,7 +538,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription</a></li>
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription</a></li>
     
   </ul>
 
@@ -532,23 +556,107 @@
 44
 45
 46
-47
-48
-49</pre>
+47</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_transcription'>create_transcription</span><span class='lparen'>(</span><span class='label'>content_urls:</span><span class='comma'>,</span> <span class='label'>properties:</span><span class='comma'>,</span> <span class='label'>locale:</span><span class='comma'>,</span> <span class='label'>display_name:</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_transcription_hash'>transcription_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_transcription'>create_transcription</span><span class='lparen'>(</span>
-    <span class='lbrace'>{</span>
-      <span class='label'>contentUrls:</span> <span class='id identifier rubyid_content_urls'>content_urls</span><span class='comma'>,</span>
-      <span class='label'>properties:</span> <span class='id identifier rubyid_properties'>properties</span><span class='comma'>,</span>
-      <span class='label'>locale:</span> <span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span>
-      <span class='label'>displayName:</span> <span class='id identifier rubyid_display_name'>display_name</span>
-    <span class='rbrace'>}</span>
+    <span class='label'>contentUrls:</span> <span class='id identifier rubyid_content_urls'>content_urls</span><span class='comma'>,</span>
+    <span class='label'>properties:</span> <span class='id identifier rubyid_properties'>properties</span><span class='comma'>,</span>
+    <span class='label'>locale:</span> <span class='id identifier rubyid_locale'>locale</span><span class='comma'>,</span>
+    <span class='label'>displayName:</span> <span class='id identifier rubyid_display_name'>display_name</span>
   <span class='rparen'>)</span>
   <span class='id identifier rubyid_build_transcription_from_hash'>build_transcription_from_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_transcription_hash'>transcription_hash</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_transcription-instance_method">
+  
+    #<strong>delete_transcription</strong>(id)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Delete an API transcription with a given ID. The transcription will not exist anymore in the API, therefore you won&#39;t be able to retrieve it.</p>
+
+<p>an error else</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the transcription in the API</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>true if the transcription had been deleted, raises</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/DeleteTranscription" target="_parent" title="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/DeleteTranscription">https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/DeleteTranscription</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_transcription'>delete_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_transcription'>delete_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -616,7 +724,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription</a></li>
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscription" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscription">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscription</a></li>
     
   </ul>
 
@@ -626,13 +734,13 @@
       <pre class="lines">
 
 
+58
+59
 60
-61
-62
-63</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_transcription'>get_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_transcription_hash'>transcription_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_transcription'>get_transcription</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
@@ -721,7 +829,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions</a></li>
+      <li><a href="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptions" target="_parent" title="https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptions">https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptions</a></li>
     
   </ul>
 
@@ -731,15 +839,15 @@
       <pre class="lines">
 
 
+74
+75
 76
 77
 78
-79
-80
-81</pre>
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/azure_stt/session.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_transcriptions'>get_transcriptions</span><span class='lparen'>(</span><span class='label'>skip:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>top:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_transcriptions_array'>transcriptions_array</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_get_transcriptions'>get_transcriptions</span><span class='lparen'>(</span><span class='label'>skip:</span> <span class='id identifier rubyid_skip'>skip</span><span class='comma'>,</span> <span class='label'>top:</span> <span class='id identifier rubyid_top'>top</span><span class='rparen'>)</span>
@@ -757,9 +865,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 24 14:16:27 2021 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-2.6.6).
+  Generated on Wed May 10 12:30:20 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.34 (ruby-2.7.7).
 </div>
 
     </div>
