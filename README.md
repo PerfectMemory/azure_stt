@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/PerfectMemory/azure_stt/badge.svg)](https://coveralls.io/github/PerfectMemory/azure_stt)
 [![Maintainability](https://api.codeclimate.com/v1/badges/375190d3122da56a9fe1/maintainability)](https://codeclimate.com/github/PerfectMemory/azure_stt/maintainability)
 
-API Wrapper for the [Microsoft Azure Speech Services Speech-to-text REST API 3.0](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-speech-to-text) (Cognitive Services).
+API Wrapper for the [Microsoft Azure Speech Services Speech-to-text REST API 3.1](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-speech-to-text) (Cognitive Services).
 
 ## Installation
 
@@ -105,7 +105,7 @@ transcription = session.get_transcription('your_transcription_id')
 # # "wordLevelTimestampsEnabled"=>false, "channels"=>[0, 1],
 # # "punctuationMode"=>"DictatedAndAutomatic", "profanityFilterMode"=>"Masked",
 # # "duration"=>"PT5M18S"}
-# # links={"files"=>"https://uscentral.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/d35a802d-70ae-4358-a35d-b5faa0c75457/files"}
+# # links={"files"=>"https://uscentral.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/d35a802d-70ae-4358-a35d-b5faa0c75457/files"}
 # # last_action_date_time=#<Date: 2020-05-31 ((2459366j,0s,0n),+0s,2299161j)> created_date_time=#<Date: 2020-05-31 ((2459366j,0s,0n),+0s,2299161j)>
 # # status="Succeeded" locale="en-US" display_name="Transcription name" files=[]>
 

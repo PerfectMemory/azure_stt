@@ -123,7 +123,7 @@ module AzureSTT
       #
       # Get the report of a transcription from transcriptions/id/files route
       #
-      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles/console
+      # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles/console
       #
       # @return [Models::Report]
       #

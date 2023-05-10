@@ -11,7 +11,7 @@ describe 'Get a transcription', integration: true do
     end
     AzureSTT.instance_variable_set(:@client, nil)
     stub_request(:get,
-                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions')
       .to_return(response)
   end
 

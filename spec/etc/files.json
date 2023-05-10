@@ -1,6 +1,6 @@
 {
   "values": [{
-      "self": "https://centralus.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/33194e40-58b7-4f15-a20f-57ed92e88016/files/35154503-6e21-46f6-b5f6-5032a2f9fef6",
+      "self": "https://centralus.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/33194e40-58b7-4f15-a20f-57ed92e88016/files/35154503-6e21-46f6-b5f6-5032a2f9fef6",
       "name": "report.json",
       "kind": "TranscriptionReport",
       "properties": {
@@ -12,7 +12,7 @@
       }
     },
     {
-      "self": "https://francecentral.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/33194e40-58b7-4f15-a20f-57ed92e88016/files/35154503-6e21-46f6-b5f6-5032a2f9fef6",
+      "self": "https://francecentral.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/33194e40-58b7-4f15-a20f-57ed92e88016/files/35154503-6e21-46f6-b5f6-5032a2f9fef6",
       "name": "contenturl_0.json",
       "kind": "Transcription",
       "properties": {

@@ -10,10 +10,10 @@ describe 'get the result of a transcription', integration: true do
       config.subscription_key = 'ljdhfkjfh'
     end
     stub_request(:get,
-                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}")
       .to_return(get_transcription_response)
     stub_request(:get,
-                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}/files")
+                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}/files")
       .to_return(get_files_response)
     stub_request(:get,
                  'https://path1.json')

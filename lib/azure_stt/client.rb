@@ -19,13 +19,13 @@ module AzureSTT
     def initialize(region:, subscription_key:)
       @subscription_key = subscription_key
       @region = region
-      self.class.base_uri "https://#{region}.api.cognitive.microsoft.com/speechtotext/v3.0"
+      self.class.base_uri "https://#{region}.api.cognitive.microsoft.com/speechtotext/v3.1"
     end
 
     #
     # Create a transcription for a batch or a single file.
     #
-    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription
+    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription
     #
     # @param [Hash] args
     #
@@ -91,7 +91,7 @@ module AzureSTT
     #
     # Get an array containing the files for a given transcription
     #
-    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles
+    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles
     #
     # @param [Integer] id The identifier of the transcription
     #

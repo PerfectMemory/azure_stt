@@ -6,11 +6,11 @@ FactoryBot.define do
   factory :transcription, class: 'AzureSTT::Models::Transcription' do
     id { SecureRandom.uuid }
     model do
-      "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/models/base/#{SecureRandom.uuid}"
+      "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/models/base/#{SecureRandom.uuid}"
     end
     links do
       {
-        files: "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}/files"
+        files: "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}/files"
       }
     end
     properties do

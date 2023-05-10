@@ -5,7 +5,7 @@ module AzureSTT
     #
     # Model class to represent files in our models
     #
-    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles/console
+    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles/console
     #
     class File < Base
       #
