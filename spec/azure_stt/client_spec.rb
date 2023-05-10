@@ -39,7 +39,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:post,
-                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions')
         .to_return(response)
     end
 
@@ -69,7 +69,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:get,
-                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}")
         .to_return(response)
     end
 
@@ -91,7 +91,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:get,
-                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+                   'https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions')
         .to_return(response)
     end
 
@@ -117,7 +117,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:get,
-                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}/files")
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}/files")
         .to_return(response)
     end
 
@@ -178,7 +178,7 @@ describe AzureSTT::Client do
 
     before do
       stub_request(:delete,
-                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+                   "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}")
         .to_return(response)
     end
 

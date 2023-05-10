@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['François Pouly']
   spec.email         = ['francois.pouly@perfect-memory.com']
 
-  spec.summary       = 'API Wrapper for the Microsoft Translator Text API 3.0'
-  spec.description   = 'API Wrapper for the Microsoft Translator Text API 3.0 (Cognitive Services)'
+  spec.summary       = 'API Wrapper for the Microsoft Translator Text API 3.1'
+  spec.description   = 'API Wrapper for the Microsoft Translator Text API 3.1 (Cognitive Services)'
   spec.homepage      = 'https://github.com/PerfectMemory/azure_stt'
   spec.license       = 'MIT'
 

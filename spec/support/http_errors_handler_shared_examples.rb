@@ -37,4 +37,26 @@ shared_examples 'HTTP_errors_handler' do
         .to raise_error(AzureSTT::ServiceError, expected_message)
     end
   end
+
+  context 'when there is a 400 error' do
+    let(:response) do
+      {
+        status: [400, 'BadRequest'],
+        headers:
+        {
+          'Content-Type' => 'application/json'
+        },
+        body: read_fixture('error_400.json')
+      }
+    end
+
+    let(:expected_message) do
+      "InvalidPayload (400): #{load_json('error_400.json').fetch('message')}"
+    end
+
+    it 'raises a ServiceError' do
+      expect { subject }
+        .to raise_error(AzureSTT::ServiceError, expected_message)
+    end
+  end
 end

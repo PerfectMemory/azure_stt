@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'httparty'
-
 module AzureSTT
   #
   # Client class that uses HTTParty to communicate with the API
@@ -20,13 +19,13 @@ module AzureSTT
     def initialize(region:, subscription_key:)
       @subscription_key = subscription_key
       @region = region
-      self.class.base_uri "https://#{region}.api.cognitive.microsoft.com/speechtotext/v3.0"
+      self.class.base_uri "https://#{region}.api.cognitive.microsoft.com/speechtotext/v3.1"
     end
 
     #
     # Create a transcription for a batch or a single file.
     #
-    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription
+    # @see https://francecentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription
     #
     # @param [Hash] args
     #
@@ -92,7 +91,7 @@ module AzureSTT
     #
     # Get an array containing the files for a given transcription
     #
-    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles
+    # @see https://uscentral.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptionFiles
     #
     # @param [Integer] id The identifier of the transcription
     #
@@ -147,9 +146,10 @@ module AzureSTT
     #
     # @return [HTTParty::Response]
     #
-    def get(path, parameters = {})
+    def get(path, parameters = nil)
       options = {
-        headers: headers.merge(parameters)
+        headers: headers,
+        query: parameters
       }.compact
 
       response = self.class.get(path, options)
@@ -177,8 +177,8 @@ module AzureSTT
         if response.request.format == :json
           raise ServiceError.new(
             code: response.code,
-            message: response.message,
-            azure_message: response.dig('error', 'message')
+            message: response['code'] || response.message,
+            azure_message: response['message'] || response.dig('error', 'message')
           )
         else
           raise NetError.new(

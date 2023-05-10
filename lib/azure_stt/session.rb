@@ -25,7 +25,7 @@ module AzureSTT
     #
     # Create a transcription by calling the API.
     #
-    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateTranscription
+    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/CreateTranscription
     #
     # @param [Array[String]] content_urls The urls of your files
     # @param [Hash] properties The properties you want to use for the
@@ -49,7 +49,7 @@ module AzureSTT
     #
     # Get a transcription identified by an id.
     #
-    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscription
+    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscription
     #
     # @param [String] id The identifier of the transcription
     #
@@ -63,7 +63,7 @@ module AzureSTT
     #
     # Get multiple transcriptions.
     #
-    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions
+    # @see https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/GetTranscriptions
     #
     # @param [Integer] skip Number of transcriptions that will be skipped (optional)
     # @param [Integer] top Number of transcriptions that will be included after skipping
@@ -82,7 +82,7 @@ module AzureSTT
     # Delete an API transcription with a given ID. The transcription will not
     # exist anymore in the API, therefore you won't be able to retrieve it.
     #
-    # @see https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription
+    # @see https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-1/operations/DeleteTranscription
     #
     # @param [String] id The id of the transcription in the API
     #

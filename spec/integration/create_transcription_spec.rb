@@ -24,7 +24,7 @@ describe 'Create a transcription', integration: true do
       config.subscription_key = 'ljdhfkjfh'
     end
     stub_request(:post,
-                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions')
+                 'https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions')
       .to_return(response)
   end
 

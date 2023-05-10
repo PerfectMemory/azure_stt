@@ -7,6 +7,7 @@ gem 'httparty', '~> 0.19'
 
 group :test do
   gem 'bundler', '~> 2'
+  gem 'debug'
   gem 'dotenv'
   gem 'factory_bot', '~> 6'
   gem 'faker', '~> 2'

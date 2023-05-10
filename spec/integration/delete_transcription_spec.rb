@@ -11,7 +11,7 @@ describe 'Delete a transcription', integration: true do
     end
     AzureSTT.instance_variable_set(:@client, nil)
     stub_request(:delete,
-                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions/#{id}")
+                 "https://region.api.cognitive.microsoft.com/speechtotext/v3.1/transcriptions/#{id}")
       .to_return(response)
   end
 
