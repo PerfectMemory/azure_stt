@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-05-10
+
 ### Fixed
 
 - `get_transcriptions` using `skip` and `top` params
